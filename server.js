@@ -19,6 +19,7 @@ app.get ('/', function(req, res){
   res.sendFile('views/index.html', { root : __dirname});
 });
 
+// Getting all the charities created
 app.get('/api/charities', function(req,res) {
   Charity.find({}, function(err,allCharities) {
     if(err) {
@@ -28,6 +29,17 @@ app.get('/api/charities', function(req,res) {
     }
   });
 });
+
+app.get('/api/users', function(req,res) {
+  User.find({}, function(err,allusers) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.json(allusers);
+    }
+  });
+});
+
 
 ////////////////////
 //  SERVER
