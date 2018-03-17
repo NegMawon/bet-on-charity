@@ -9,7 +9,8 @@ var express = require("express"),
   cookieParser = require("cookie-parser"),
   session = require("express-session"),
   passport = require("passport"),
-  LocalStrategy = require("passport-local").Strategy;
+  LocalStrategy = require("passport-local").Strategy,
+  request = require('request');
 // connect to db models
 var db = require('./models'),
   Game = db.Game,
@@ -61,7 +62,16 @@ app.get("/games/:id", function(req, res) {
   });
 });
 
-
+app.get('/allGames', function(req, res){
+ 
+  request('http://api.sportradar.us/ncaamb/trial/v4/en/games/e8ba508c-3a41-4cd5-bfad-5a60f2738420/boxscore.json?api_key=x4nyauywjpp2w4mpg7xwautr', function (error, response, body) {
+    res.json(response.body);
+    
+    // console.log('error:', error); // Print the error if one occurred
+    // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    // console.log('body:', body); // Print the HTML for the Google homepage.
+  });
+})
 
 
 ////////////////////
