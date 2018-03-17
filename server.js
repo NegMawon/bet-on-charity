@@ -40,6 +40,16 @@ app.get ('/', function(req, res){
   });
   console.log("index");
   });
+
+  app.get("/games", function(req, res) {
+    Game.findById(req.params.id, function(err, foundGame) {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.render("games/show", { game: foundGame });
+      }
+    });
+  });
   
 app.get("/games/:id", function(req, res) {
   Game.findById(req.params.id, function(err, foundGame) {
@@ -51,9 +61,9 @@ app.get("/games/:id", function(req, res) {
   });
 });
 
-app.get('/games/boxscore', function(req, res){
-  console.log(res);  
-})
+
+
+
 ////////////////////
 //  SERVER
 ///////////////////
