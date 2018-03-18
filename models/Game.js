@@ -4,7 +4,9 @@ var mongoose = require("mongoose"),
 var GameSchema = new Schema({
   title: String,
   description: String,
-  user: {type: Schema.Types.ObjectId, ref:'User'}
+  user: String,
+  team1: String,
+  team2: String
 });
 
 var Game = mongoose.model("Game", GameSchema);

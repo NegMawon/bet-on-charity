@@ -4,19 +4,39 @@ var db = require('./models'),
 var games_list = [
 
   {
-    title: faker.address.state(), 
-    description: faker.random.words()
-    // user: faker.helpers.createCard()
+    title: "NCAAMB",
+    description: faker.random.words(),
+    user: faker.random.number(),
+    team1: faker.address.state(),
+    team2: faker.address.state()
 
   },{
-    title: faker.address.state(), 
-    description: faker.random.words()
-    // user: faker.helpers.createCard()
+    title: "NCAAMB",
+    description: faker.random.words(),
+    user: faker.random.number(),
+    team1: faker.address.state(),
+    team2: faker.address.state()
 
   },{
-    title: faker.address.state(), 
-    description: faker.random.words()
-    // user: faker.helpers.createCard()
+    title: "NCAAMB",
+    description: faker.random.words(),
+    user: faker.random.number(),
+    team1: faker.address.state(),
+    team2: faker.address.state()
+
+  },{
+    title: "NCAAMB",
+    description: faker.random.words(),
+    user: faker.random.number(),
+    team1: faker.address.state(),
+    team2: faker.address.state()
+
+  },{
+    title: "NCAAMB",
+    description: faker.random.words(),
+    user: faker.random.number(),
+    team1: faker.address.state(),
+    team2: faker.address.state()
 
   }
 ];
@@ -50,5 +70,3 @@ db.Game.remove({}, function(err){
 // description: faker.address.state()
 // // user: Math.floor(Math.random() * 5)
 // });
-
-

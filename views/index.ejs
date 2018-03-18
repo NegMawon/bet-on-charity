@@ -55,22 +55,53 @@
                 <!-- game label (title) -->
                 <a href="/games/<%= game._id %>" class="label label-default"><%= game.title %></a>
 
-                <!-- game description -->
-                <%= game.description %>
-                <%= game._id %>
+                <div class="versus">
+
+                <p><%= game.team1 %>
+                <!-- <div class="pull-right"> -->
+                  <!-- pencil icon to toggle update form -->
+                  <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-<%= game._id %>">
+                    <span class="glyphicon glyphicon-ok-sign"></span>
+                  </a>
+                <!-- </div> -->
+                </p>
+
+                <div class="amount-charity">
+                  <h1>VS.</h1>
+
+                  <form method="POST" action="/selectCharity">
+                      <input type="text" name="amount" value="">
+                      <span class="validity"></span>
+                      <select name="charities" class="charity_category">
+                          <option value="Homless">Homless</option>
+                          <option value="Animals">Animals</option>
+                          <option value="Prevention">Prevention</option>
+                      </select>
+                      <input type='submit'name ='charity'>
+                  </form>
+
+                </div>
+
+                <p><%= game.team2 %>
 
 
-                <div class="pull-right">
+
                   <!-- pencil icon to toggle update form -->
                   <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-<%= game._id %>">
                     <span class="glyphicon glyphicon-ok-sign"></span>
                   </a>
 
+                </p>
 
+              </div>
+
+
+
+                <!-- <%= game._id %> -->
               </li>
             <% } %>
         </ul>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </body>

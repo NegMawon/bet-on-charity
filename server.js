@@ -38,20 +38,40 @@ app.get ('/', function(req, res){
       //show games of logged in user
       res.render("index", { games: allGames, user: req.user });
     }
-  });
-  console.log("index");
+   });
   });
 
-  app.get("/games", function(req, res) {
-    Game.findById(req.params.id, function(err, foundGame) {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.render("games/show", { game: foundGame });
-      }
+  app.post ('/', function(req, res){
+    // res.sendFile('views/index', { root : __dirname});
+    // res.render("index", { games: allGames});
+    var newBet = new db.Bet({
+      team: req.body.team,
+      charity: req.body.charity,
+      amount: req.body.amount,
+      gameId: req.params.id
     });
-  });
-  
+    console.log(req.body, newBet);
+    bet.save(function(err, bet){
+      if (err) {
+        return console.log("save error: " + err);
+      }
+      console.log("saved ", bet.title);
+      // send back the bet!
+      res.json(bet);
+    });
+
+    });
+
+  // app.get("/games", function(req, res) {
+  //   Game.findById(req.params.id, function(err, foundGame) {
+  //     if (err) {
+  //       res.status(500).json({ error: err.message });
+  //     } else {
+  //       res.render("games/show", { game: foundGame });
+  //     }
+  //   });
+  // });
+
 app.get("/games/:id", function(req, res) {
   Game.findById(req.params.id, function(err, foundGame) {
     if (err) {
@@ -63,10 +83,13 @@ app.get("/games/:id", function(req, res) {
 });
 
 app.get('/allGames', function(req, res){
- 
+
   request('http://api.sportradar.us/ncaamb/trial/v4/en/games/e8ba508c-3a41-4cd5-bfad-5a60f2738420/boxscore.json?api_key=x4nyauywjpp2w4mpg7xwautr', function (error, response, body) {
-    res.json(response.body);
-    
+    res.json(response.body['id']);
+    console.log(body.id);
+    // console.log(response.body);
+
+
     // console.log('error:', error); // Print the error if one occurred
     // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     // console.log('body:', body); // Print the HTML for the Google homepage.

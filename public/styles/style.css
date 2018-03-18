@@ -1,0 +1,23 @@
+.versus {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.versus p,
+select {
+  display: flex;
+  flex-direction: column;
+}
+.versus h1 {
+  margin: 0;
+}
+
+input:invalid+span:after {
+  content: '✖';
+  padding-left: 5px;
+}
+
+input:valid+span:after {
+  content: '✓';
+  padding-left: 5px;
+}
