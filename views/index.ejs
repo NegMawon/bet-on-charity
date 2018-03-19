@@ -58,22 +58,22 @@
                     <p><%= game.team1 %></p>
                     <!-- icon to toggle update form -->
                   </article>
-                  <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-<%= game._id %>">
+
                     <span class="glyphicon glyphicon-ok-sign"></span>
-                  </a>
+                
 
                 <div class="amount-charity">
-                  <h1>VS.</h1>
+                  <h1 class="vs">VS.</h1>
 
                   <form method="POST" action="/confirmBet">
-                      <input type="number" name="amount" value="1" min="1" required>
+                      <span class="currencyinput">$<input type="number" name="amount" value="1" min="1" required></span>
                       <span class="validity"></span>
                       <select name="charitiy" class="charity_category">
                           <option value="Homless">Homless</option>
                           <option value="Animals">Animals</option>
                           <option value="Prevention">Prevention</option>
                       </select>
-                      <input type='submit'name ='charity'>
+                      <input class="submit" type='submit'name ='charity'>
                   </form>
 
                 </div>

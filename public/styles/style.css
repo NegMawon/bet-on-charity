@@ -13,6 +13,10 @@
   display: flex;
   justify-content: space-evenly;
 }
+.vs {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
 
 .versus p,
 select {
@@ -33,10 +37,25 @@ select {
 }
 
 .versus h1 {
-  margin: 0;
+  /* margin: 0; */
+}
+.currencyinput {
+    border: 1px inset #ccc;
+}
+.currencyinput input {
+    border: 0;
 }
 input {
-  width: 3em;
+  width: 5em;
+}
+.submit {
+  background: slategray;
+  color: white;
+}
+
+.submit:hover {
+  background: darkgray;
+  color: white;
 }
 
 input:invalid+span:after {
