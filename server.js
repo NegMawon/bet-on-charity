@@ -21,11 +21,8 @@ var db = require("./models"),
 // generate a new express app and call it 'app'
 var app = express();
 // serve static files in public
-<<<<<<< HEAD
-app.use(express.static("public"));
-=======
 app.use(express.static(__dirname + "/public"));
->>>>>>> authentication
+
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 // set view engine to ejs (like ERB in rails)
@@ -60,7 +57,7 @@ app.get("/", function(req, res) {
 
       //show games of logged in user
       Bet.find({}, function(err, foundBets){
-      console.log("foundBets", foundBets[0].amount);
+      //console.log("foundBets", foundBets[0].amount);
         var totalBetsAmounts = 0;
         foundBets.forEach(function(bet){
           console.log(bet.amount);
