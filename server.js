@@ -14,7 +14,8 @@ var express = require("express"),
 // connect to db models
 var db = require('./models'),
   Game = db.Game,
-  User = db.User;
+  User = db.User,
+  Bet = db.Bet;
 // generate a new express app and call it 'app'
 var app = express();
 // serve static files in public
@@ -41,23 +42,27 @@ app.get ('/', function(req, res){
    });
   });
 
-  app.post ('/', function(req, res){
+ //create new user bet and redirect to confirmation page
+  app.post ('/confirmBet', function(req, res){
     // res.sendFile('views/index', { root : __dirname});
     // res.render("index", { games: allGames});
     var newBet = new db.Bet({
-      team: req.body.team,
+      // team: req.body.team,
       charity: req.body.charity,
-      amount: req.body.amount,
-      gameId: req.params.id
+      amount: req.body.amount
+      // ,
+      // gameId: req.params.id
     });
     console.log(req.body, newBet);
     bet.save(function(err, bet){
       if (err) {
         return console.log("save error: " + err);
       }
-      console.log("saved ", bet.title);
+      console.log("saved ", bet);
       // send back the bet!
-      res.json(bet);
+      // res.json(bet);
+      // res.render({bet: newBet});
+      // res.render("/confirmBet", { bet: newBet });
     });
 
     });

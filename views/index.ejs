@@ -31,19 +31,16 @@
     <div class="row">
       <div class="col-md-12">
 
-        <!-- new game form-->
-        <form class="form-inline" id="create-game" method="POST" action="/games">
-          <div class="form-group">
-            <input type="text" name="title" class="form-control" placeholder="Title" autofocus>
+
+        <div class="well">
+          <div class="container">
+            <div class="page-header">
+              <h1>Predict the winner <small>support a charity</small></h1>
+            </div>
+            <h1 class="">NCAAMB</h1>
           </div>
-          <div class="form-group">
-            <input type="text" name="description" class="form-control" placeholder="Description">
-          </div>
-          <div class="form-group">
-            <input type="submit" class="btn btn-default" value="Add Post">
-          </div>
-        </form>
-        <br>
+        </div>
+
 
 
         <!-- list of games -->
@@ -53,26 +50,25 @@
               <li class="list-group-item game" data-id="<%= game._id %>">
 
                 <!-- game label (title) -->
-                <a href="/games/<%= game._id %>" class="label label-default"><%= game.title %></a>
+                <!-- <a href="/games/<%= game._id %>" class="games label label-default"><%= game.title %></a> -->
 
                 <div class="versus">
 
-                <p><%= game.team1 %>
-                <!-- <div class="pull-right"> -->
-                  <!-- pencil icon to toggle update form -->
+                  <article class="textcentered">
+                    <p><%= game.team1 %></p>
+                    <!-- icon to toggle update form -->
+                  </article>
                   <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-<%= game._id %>">
                     <span class="glyphicon glyphicon-ok-sign"></span>
                   </a>
-                <!-- </div> -->
-                </p>
 
                 <div class="amount-charity">
                   <h1>VS.</h1>
 
-                  <form method="POST" action="/selectCharity">
-                      <input type="text" name="amount" value="">
+                  <form method="POST" action="/confirmBet">
+                      <input type="number" name="amount" value="1" min="1" required>
                       <span class="validity"></span>
-                      <select name="charities" class="charity_category">
+                      <select name="charitiy" class="charity_category">
                           <option value="Homless">Homless</option>
                           <option value="Animals">Animals</option>
                           <option value="Prevention">Prevention</option>
@@ -82,16 +78,15 @@
 
                 </div>
 
-                <p><%= game.team2 %>
+                <article class="textcentered">
+                  <p><%= game.team2 %></p>
+                  <!-- icon to toggle update form -->
+                </article>
+                <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-<%= game._id %>">
+                  <span class="glyphicon glyphicon-ok-sign"></span>
+                </a>
 
 
-
-                  <!-- pencil icon to toggle update form -->
-                  <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-<%= game._id %>">
-                    <span class="glyphicon glyphicon-ok-sign"></span>
-                  </a>
-
-                </p>
 
               </div>
 
