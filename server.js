@@ -47,14 +47,14 @@ app.get ('/', function(req, res){
     // res.sendFile('views/index', { root : __dirname});
     // res.render("index", { games: allGames});
     var newBet = new Bet({
-      // team: req.body.team,
+      team: req.body.team,
       charity: req.body.charity,
       amount: req.body.amount
       // ,
       // gameId: req.params.id
     });
     console.log(req.body);
-    bet.save(function(err, bet){
+    newBet.save(function(err, bet){
       if (err) {
         return console.log("save error: " + err);
       }
@@ -62,7 +62,7 @@ app.get ('/', function(req, res){
       // send back the bet!
       // res.json(bet);
       // res.render({bet: newBet});
-      res.render("/confirmBet", { bet: newBet });
+      res.render("confirmBet", { bet: bet });
       // res.render("/confirmBet", { bet: req.body });
     });
 

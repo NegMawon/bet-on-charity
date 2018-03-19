@@ -10,12 +10,15 @@
   Confirm your pediction!
 
 
-  <p data-id="<%= bet._id %>">>
-
+  <p data-id="<%= bet._id %>">
+    <%= bet.team %>
     <%= bet.charity %>
     <%= bet.amount %>
   </p>
-  <button type="sumbit" name="confirm"></button>
+  <form method="POST" action="/confirmBet">
+    
+  <button type="sumbit" name="confirm">Confirm</button>
+</form>
 
 </body>
 </html>
