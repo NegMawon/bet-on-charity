@@ -43,30 +43,51 @@ app.get ('/', function(req, res){
   });
 
  //create new user bet and redirect to confirmation page
-  app.post ('/confirmBet', function(req, res){
+  app.post ('/', function(req, res){
     // res.sendFile('views/index', { root : __dirname});
     // res.render("index", { games: allGames});
+    console.log("req.body",req.body);
+    // var newBet = new Bet({
+    //   team: req.body.team,
+    //   charity: req.body.charity,
+    //   amount: req.body.amount
+    //   // ,
+    //   // gameId: req.params.id
+    // });
+    // console.log("newBet",newBet);
+    return res.render("confirmBet", { bet: req.body });
+     // saveBet(newBet, res);
+
+    });
+
+  app.post ('/confirmBet', function(req, res){
+    // function saveBet(newBet, res){
+    console.log(req.body);
     var newBet = new Bet({
       team: req.body.team,
       charity: req.body.charity,
       amount: req.body.amount
-      // ,
-      // gameId: req.params.id
     });
-    console.log(req.body);
-    newBet.save(function(err, bet){
-      if (err) {
-        return console.log("save error: " + err);
-      }
-      console.log("saved ", bet);
-      // send back the bet!
-      // res.json(bet);
-      // res.render({bet: newBet});
-      res.render("confirmBet", { bet: bet });
-      // res.render("/confirmBet", { bet: req.body });
-    });
+   // Bet.findOne(req.body.id, function(err, bet){
+   //   console.log(bet);
+     newBet.save(function(err, bet){
+       if (err) {
+         return console.log("save error: " + err);
+       }
+       console.log("saved ", bet);
+       // send back the bet!
+       // res.json(bet);
+       // res.render({bet: newBet});
+       // res.render("confirmBet", { bet: bet });
+       res.redirect("/");
+   })
 
-    });
+      // res.render("/confirmBet", { bet: req.body });
+    // });
+  // }//saveBet
+  });
+
+
 
   // app.get("/games", function(req, res) {
   //   Game.findById(req.params.id, function(err, foundGame) {
