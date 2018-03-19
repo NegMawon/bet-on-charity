@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+
+ <!-- set viewport to device width to make site responsive -->
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- bootstrap css -->
+ <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+ <!-- custom styles -->
+ <link rel="stylesheet" type="text/css" href="/styles/style.css">
+
+ <!-- jquery -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+ <!-- bootstrap js -->
+ <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+ <!-- custom script -->
+ <script type="text/javascript" src="/scripts/app.js"></script>
+
+ <title>betoncharity</title>
+</head>
+<body>
+
+
+  <!-- page content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+
+        <div class="well">
+          <div class="container">
+            <div class="page-header">
+              <h1>Predict the winner <small>support a charity</small></h1>
+            </div>
+            <h1 class="">NCAAMB</h1>
+          </div>
+        </div>
+
+
+
+        <!-- list of games -->
+        <ul class="list-group" id="games-list">
+
+          <% for (let game of games) { %>
+              <li class="list-group-item game" data-id="<%= game._id %>">
+
+                <!-- game label (title) -->
+                <!-- <a href="/games/<%= game._id %>" class="games label label-default"><%= game.title %></a> -->
+
+                <div class="versus">
+
+                  <article class="textcentered">
+                    <p><%= game.team1 %></p>
+                    <!-- <a href="javascript:void(0)" class="selectedTeam" data-toggle="collapse" data-target="<%= game.team1 %>"></a>  -->
+
+                  </article>
+
+                    <!-- <span class="glyphicon glyphicon-ok-sign"></span> -->
+
+
+                    <h1 class="vs">VS.</h1>
+                <!-- <div class="amount-charity">
+
+                  <form method="POST" action="/confirmBet">
+                      <span class="currencyinput">$</span><input type="number" name="amount" value="1" min="1" required placeholder"bet amount">
+                      <span class="validity"></span>
+                      <select name="charitiy" class="charity_category">
+                          <option value="Homeless">Homeless</option>
+                          <option value="Animals">Animals</option>
+                          <option value="Prevention">Prevention</option>
+                      </select>
+                      <select name="team" class="team-selector">
+                        //https://stackoverflow.com/questions/8605516/default-select-option-as-blank
+                          <option disabled selected value> -- select a team -- </option>
+                          <option value="<%= game.team1 %>"><%= game.team1 %></option>
+                          <option value="<%= game.team2 %>"><%= game.team2 %></option>
+                      </select>
+                      <input class="submit" type='submit'name ='charity'>
+                  </form>
+
+                </div> -->
+
+                <article class="textcentered">
+                  <p><%= game.team2 %></p>
+                  <!-- icon to toggle update form -->
+                <!-- <a href="javascript:void(0)" class="selectedTeam" data-toggle="collapse" data-target="<%= game.team2 %>"> -->
+                  <!-- <span class="glyphicon glyphicon-ok-sign"></span> -->
+                <!-- </a> -->
+              </article>
+
+              </div>
+
+              <div class="amount-charity">
+
+
+                <form method="POST" action="/confirmBet">
+                    <span class="currencyinput">$</span><input type="number" name="amount" value="1" min="1" required placeholder"bet amount">
+                    <span class="validity"></span>
+                    <select name="charitiy" class="charity_category">
+                        <option value="Homeless">Homeless</option>
+                        <option value="Animals">Animals</option>
+                        <option value="Prevention">Prevention</option>
+                    </select>
+                    <select name="team" class="team-selector">
+                      <!-- //https://stackoverflow.com/questions/8605516/default-select-option-as-blank -->
+                        <option disabled selected value> -- select a team -- </option>
+                        <option value="<%= game.team1 %>"><%= game.team1 %></option>
+                        <option value="<%= game.team2 %>"><%= game.team2 %></option>
+                    </select>
+                    <input class="submit" type='submit'>
+                </form>
+
+              </div>
+
+                <!-- <%= game._id %> -->
+              </li>
+            <% } %>
+        </ul>
+      <!-- </div> -->
+    </div>
+  </div>
+</body>
+</html>
