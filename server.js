@@ -46,24 +46,25 @@ app.get ('/', function(req, res){
   app.post ('/confirmBet', function(req, res){
     // res.sendFile('views/index', { root : __dirname});
     // res.render("index", { games: allGames});
-    // var newBet = new Bet({
-    //   // team: req.body.team,
-    //   charity: req.body.charity,
-    //   amount: req.body.amount
-    //   // ,
-    //   // gameId: req.params.id
-    // });
+    var newBet = new Bet({
+      team: req.body.team,
+      charity: req.body.charity,
+      amount: req.body.amount
+      // ,
+      // gameId: req.params.id
+    });
     console.log(req.body);
-    // bet.save(function(err, bet){
-    //   if (err) {
-    //     return console.log("save error: " + err);
-    //   }
-    //   console.log("saved ", bet);
-    //   // send back the bet!
-    //   // res.json(bet);
-    //   // res.render({bet: newBet});
+    newBet.save(function(err, bet){
+      if (err) {
+        return console.log("save error: " + err);
+      }
+      console.log("saved ", bet);
+      // send back the bet!
+      // res.json(bet);
+      // res.render({bet: newBet});
+      res.render("confirmBet", { bet: bet });
       // res.render("/confirmBet", { bet: req.body });
-    // });
+    });
 
     });
 
