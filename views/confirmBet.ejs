@@ -9,18 +9,16 @@
 <body>
   Confirm your pediction!
 
-
   <div data-id="<%= bet._id %>">
     <h1> You bet on the <%= bet.team %></h1
     <h3>The charity you are supporing is <%= bet.charity %></h3>
     <h3>The amount of the bet is $<%= bet.amount %></h3>
   </div>
+  <!-- //this works like a pass-though for form data. key: type hidden -->
   <form method="POST" action="/confirmBet">
-   <!-- <input type="hidden" name="id" value="<%= bet._id %>"> -->
     <input type="hidden" name="charity" value="<%= bet.charity %>">
       <input type="hidden" name="team" value="<%= bet.team %>">
         <input type="hidden" name="amount" value="<%= bet.amount %>">
-  <!-- <button type="sumbit" name="confirm">Confirm</button> -->
   <input class="submit" type='submit'>
 </form>
 
