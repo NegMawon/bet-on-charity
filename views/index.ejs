@@ -56,41 +56,66 @@
 
                   <article class="textcentered">
                     <p><%= game.team1 %></p>
-                    <!-- icon to toggle update form -->
+                    <!-- <a href="javascript:void(0)" class="selectedTeam" data-toggle="collapse" data-target="<%= game.team1 %>"></a>  -->
+
                   </article>
 
-                    <span class="glyphicon glyphicon-ok-sign"></span>
-                
+                    <!-- <span class="glyphicon glyphicon-ok-sign"></span> -->
 
-                <div class="amount-charity">
-                  <h1 class="vs">VS.</h1>
+
+                    <h1 class="vs">VS.</h1>
+                <!-- <div class="amount-charity">
 
                   <form method="POST" action="/confirmBet">
-                      <span class="currencyinput">$<input type="number" name="amount" value="1" min="1" required></span>
+                      <span class="currencyinput">$</span><input type="number" name="amount" value="1" min="1" required placeholder"bet amount">
                       <span class="validity"></span>
                       <select name="charitiy" class="charity_category">
-                          <option value="Homless">Homless</option>
+                          <option value="Homeless">Homeless</option>
                           <option value="Animals">Animals</option>
                           <option value="Prevention">Prevention</option>
+                      </select>
+                      <select name="team" class="team-selector">
+                        //https://stackoverflow.com/questions/8605516/default-select-option-as-blank
+                          <option disabled selected value> -- select a team -- </option>
+                          <option value="<%= game.team1 %>"><%= game.team1 %></option>
+                          <option value="<%= game.team2 %>"><%= game.team2 %></option>
                       </select>
                       <input class="submit" type='submit'name ='charity'>
                   </form>
 
-                </div>
+                </div> -->
 
                 <article class="textcentered">
                   <p><%= game.team2 %></p>
                   <!-- icon to toggle update form -->
-                </article>
-                <a href="javascript:void(0)" data-toggle="collapse" data-target="#update-<%= game._id %>">
-                  <span class="glyphicon glyphicon-ok-sign"></span>
-                </a>
-
-
+                <!-- <a href="javascript:void(0)" class="selectedTeam" data-toggle="collapse" data-target="<%= game.team2 %>"> -->
+                  <!-- <span class="glyphicon glyphicon-ok-sign"></span> -->
+                <!-- </a> -->
+              </article>
 
               </div>
 
+              <div class="amount-charity">
 
+
+                <form method="POST" action="/confirmBet">
+                    <span class="currencyinput">$</span><input type="number" name="amount" value="1" min="1" required placeholder"bet amount">
+                    <span class="validity"></span>
+                    <select name="charitiy" class="charity_category">
+                        <option value="Homeless">Homeless</option>
+                        <option value="Animals">Animals</option>
+                        <option value="Prevention">Prevention</option>
+                    </select>
+                    <select name="team" class="team-selector">
+                      <!-- //https://stackoverflow.com/questions/8605516/default-select-option-as-blank -->
+                        <option disabled selected value> -- select a team -- </option>
+                        <option value="<%= game.team1 %>"><%= game.team1 %></option>
+                        <option value="<%= game.team2 %>"><%= game.team2 %></option>
+                    </select>
+                    <input class="submit" type='submit'name ='charity'>
+                </form>
+
+              </div>
 
                 <!-- <%= game._id %> -->
               </li>

@@ -8,7 +8,10 @@
   top: -73px;
   left: -189px;
 }
-
+.amount-charity {
+  display: flex;
+  justify-content: space-evenly;
+}
 .versus {
   display: flex;
   justify-content: space-evenly;
@@ -39,14 +42,10 @@ select {
 .versus h1 {
   /* margin: 0; */
 }
-.currencyinput {
-    border: 1px inset #ccc;
-}
-.currencyinput input {
-    border: 0;
-}
-input {
-  width: 5em;
+
+input,
+select {
+  width: 7em;
 }
 .submit {
   background: slategray;
@@ -69,3 +68,9 @@ input:valid+span:after {
   color: green;
   padding-left: 5px;
 }
+/* .currencyinput {
+    border: 1px inset #ccc;
+}
+.currencyinput input {
+    border: 0;
+} */

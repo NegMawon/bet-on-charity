@@ -46,7 +46,7 @@ app.get ('/', function(req, res){
   app.post ('/confirmBet', function(req, res){
     // res.sendFile('views/index', { root : __dirname});
     // res.render("index", { games: allGames});
-    var newBet = new db.Bet({
+    var newBet = new Bet({
       // team: req.body.team,
       charity: req.body.charity,
       amount: req.body.amount
