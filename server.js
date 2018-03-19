@@ -2,23 +2,106 @@
 //  SETUP and CONFIGURATION
 /////////////////////////////
 //require express in our app
-var express = require('express'),
-  bodyParser = require('body-parser');
+var express = require("express"),
+  app = express(),
+  bodyParser = require("body-parser"),
+  methodOverride = require("method-override"),
+  cookieParser = require("cookie-parser"),
+  session = require("express-session"),
+  passport = require("passport"),
+  LocalStrategy = require("passport-local").Strategy,
+  request = require('request');
 // connect to db models
-//var db = require('./models');
+var db = require('./models'),
+  Game = db.Game,
+  User = db.User,
+  Bet = db.Bet;
 // generate a new express app and call it 'app'
 var app = express();
 // serve static files in public
 app.use(express.static('public'));
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// set view engine to ejs (like ERB in rails)
+app.set("view engine", "ejs");
+
 ////////////////////
 //  ROUTES
 ///////////////////
 app.get ('/', function(req, res){
-  res.sendFile('views/index.html', { root : __dirname});
+  // res.sendFile('views/index', { root : __dirname});
+  // res.render("index", { games: allGames});
+  Game.find(function(err, allGames) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      //show games of logged in user
+      res.render("index", { games: allGames, user: req.user });
+    }
+   });
+  });
 
+ //create new user bet and redirect to confirmation page
+  app.post ('/confirmBet', function(req, res){
+    // res.sendFile('views/index', { root : __dirname});
+    // res.render("index", { games: allGames});
+    var newBet = new Bet({
+      // team: req.body.team,
+      charity: req.body.charity,
+      amount: req.body.amount
+      // ,
+      // gameId: req.params.id
+    });
+    console.log(req.body, newBet);
+    bet.save(function(err, bet){
+      if (err) {
+        return console.log("save error: " + err);
+      }
+      console.log("saved ", bet);
+      // send back the bet!
+      // res.json(bet);
+      // res.render({bet: newBet});
+      // res.render("/confirmBet", { bet: newBet });
+    });
+
+    });
+
+  // app.get("/games", function(req, res) {
+  //   Game.findById(req.params.id, function(err, foundGame) {
+  //     if (err) {
+  //       res.status(500).json({ error: err.message });
+  //     } else {
+  //       res.render("games/show", { game: foundGame });
+  //     }
+  //   });
+  // });
+
+app.get("/games/:id", function(req, res) {
+  Game.findById(req.params.id, function(err, foundGame) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+    } else {
+      res.render("games/show", { game: foundGame });
+    }
+  });
+});
+
+app.get('/allGames', function(req, res){
+
+  request('http://api.sportradar.us/ncaamb/trial/v4/en/games/e8ba508c-3a41-4cd5-bfad-5a60f2738420/boxscore.json?api_key=x4nyauywjpp2w4mpg7xwautr', function (error, response, body) {
+    res.json(response.body['id']);
+    console.log(body.id);
+    // console.log(response.body);
+
+
+    // console.log('error:', error); // Print the error if one occurred
+    // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    // console.log('body:', body); // Print the HTML for the Google homepage.
+  });
 })
+
+
 ////////////////////
 //  SERVER
 ///////////////////
