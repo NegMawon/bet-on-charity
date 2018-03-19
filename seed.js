@@ -53,6 +53,14 @@ var charityList = [
   }
 ];
 
+var gameList = [
+{
+  date: Date,
+  wager: 10.00
+}
+];
+var u;
+var c;
 db.User.remove({}, function(err, users) {
  console.log('removed all Users');
  db.User.create(userList, function(err, users){
@@ -62,10 +70,11 @@ db.User.remove({}, function(err, users) {
    }
  console.log('recreated all users');
    console.log('created', users.length, 'users');
-   process.exit();
- })
+ u=users[0];
+ });
 
 });
+
 
 db.Charity.remove({}, function(err, charities) {
  console.log('removed all charities');
@@ -76,6 +85,22 @@ db.Charity.remove({}, function(err, charities) {
    }
  console.log('recreated all charities');
    console.log('created', charities.length, 'charities');
-   process.exit();
- })
+   c=charities[0];
+ });
+});
+
+db.Game.remove({}, function(err, games) {
+ console.log('removed all Games');
+ var game=new db.Game(gameList);
+ game.Charity=c;
+ game.User=u;
+ game.save(function(err, games){
+    if (err) {
+     console.log(err);
+     return;
+   }
+ console.log('recreated all games');
+   console.log('created', games.length, 'games');
+
+ });
 });

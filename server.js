@@ -40,6 +40,24 @@ app.get('/api/users', function(req,res) {
   });
 });
 
+app.post('/api/users', function(req,res) {
+  var newUser = new User(req.body);
+  newUser.save(function(err,savedUser)  {
+    if (err){
+      console.log(err);
+    } else {
+      res.json(savedUser);
+    }
+  });
+});
+
+app.delete('/api/users/:id', function(req,res)  {
+  var userId = req.params.id;
+  // find and remove user by :id
+  User.findOneAndRemove({_id: userId}, function() {
+    res.redirect('/');
+  });
+});
 
 ////////////////////
 //  SERVER
