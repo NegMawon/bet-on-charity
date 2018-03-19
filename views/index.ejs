@@ -37,7 +37,7 @@
             <div class="page-header">
               <h1>Predict the winner <small>support a charity</small></h1>
             </div>
-            <h1 class="">NCAAMB</h1>
+            <h1 class="">NCAAMB</h1> <p>total charity contributions:<%=bets.foundBets%><%=totalBetsAmounts%> </p>
           </div>
         </div>
 
@@ -98,10 +98,10 @@
               <div class="amount-charity">
 
 
-                <form method="POST" action="/confirmBet">
+                <form method="POST" action="/">
                     <span class="currencyinput">$</span><input type="number" name="amount" value="1" min="1" required placeholder"bet amount">
                     <span class="validity"></span>
-                    <select name="charitiy" class="charity_category">
+                    <select name="charity" class="charity_category">
                         <option value="Homeless">Homeless</option>
                         <option value="Animals">Animals</option>
                         <option value="Prevention">Prevention</option>
