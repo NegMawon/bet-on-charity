@@ -107,5 +107,5 @@ app.get('/allGames', function(req, res){
 ///////////////////
 // Server is listenning on
 app.listen(process.env.PORT || 3000, function () {
-  console.log('www.betoncharity.org is listening at: http://localhost:3000/');
+  console.log('www.BettingonCharity.org is listening at: http://localhost:3000/');
 });
