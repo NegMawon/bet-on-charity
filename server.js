@@ -19,12 +19,29 @@ var db = require('./models'),
 // generate a new express app and call it 'app'
 var app = express();
 // serve static files in public
-app.use(express.static('public'));
+app.use(express.static(__dirname + "/public"));
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
-
 // set view engine to ejs (like ERB in rails)
 app.set("view engine", "ejs");
+
+/*******************
+** Auth Middleware**/
+
+app.use(cookieParser());
+app.use(session(  {
+  secret: 'betoncharity',
+    saveUninitialized: false,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport config
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(methodOverride("_method"));
 
 ////////////////////
 //  ROUTES
@@ -102,6 +119,34 @@ app.get('/allGames', function(req, res){
 })
 
 
+//////////////////////
+//// Auth Routes ////
+
+// show signup view
+app.get('/signup', function (req, res) {
+ res.render('signup');
+});
+
+// Signing up new user, log them in
+// hash and salts password, saves new user to db
+app.post('/signup', function (req, res) {
+  User.register(new User({
+
+          firstname: req.body.firstname,
+
+          lastname: req.body.lastname,
+
+          email: req.body.email ,
+
+          username: req.body.username}),
+    req.body.password,
+    function (err, newUser) {
+      passport.authenticate('local')(req, res, function() {
+        res.send('signed up!!!');
+      });
+    }
+  );
+});
 ////////////////////
 //  SERVER
 ///////////////////
