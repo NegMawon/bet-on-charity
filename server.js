@@ -138,7 +138,7 @@ app.get("/games/:id", function(req, res) {
     }
   });
 });
-// 
+//
 // app.get("/allGames", function(req, res) {
 //   var params = {
 //            format: JSON,
@@ -172,7 +172,7 @@ app.get("/allGames", function(req, res) {
       res.json(body);
       // console.log(body);
       // console.log(response.body);
-// 
+//
 //       // console.log('error:', error); // Print the error if one occurred
 //       // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 //       // console.log('body:', body); // Print the HTML for the Google homepage.
@@ -187,6 +187,12 @@ app.get("/allGames", function(req, res) {
 app.get('/signup', function (req, res) {
  res.render('signup');
 });
+
+// show login view
+app.get('/login', function (req, res) {
+ res.render('login');
+});
+
 
 // Signing up new user, log them in
 // hash and salts password, saves new user to db
@@ -203,10 +209,27 @@ app.post('/signup', function (req, res) {
     req.body.password,
     function (err, newUser) {
       passport.authenticate('local')(req, res, function() {
+
         res.redirect("/");
+
       });
     }
   );
+});
+
+// log in user
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user);
+  res.send('logged in!!!'); // sanity check
+  // res.redirect('/'); // preferred!
+});
+
+// log out user
+app.get('/logout', function (req, res) {
+  console.log("BEFORE logout", JSON.stringify(req.user));
+  req.logout();
+  console.log("AFTER logout", JSON.stringify(req.user));
+  res.redirect('/');
 });
 
 ////////////////////
