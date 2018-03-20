@@ -98,8 +98,11 @@ app.post("/confirmBet", function(req, res) {
   var newBet = new Bet({
     team: req.body.team,
     charity: req.body.charity,
-    amount: req.body.amount
+    amount: req.body.amount,
+    username: req.body.username,
+    gameId: req.body.gameId
   });
+
   // Bet.findOne(req.body.id, function(err, bet){
   //   console.log(bet);
   newBet.save(function(err, bet) {
@@ -199,7 +202,7 @@ app.post('/signup', function (req, res) {
     req.body.password,
     function (err, newUser) {
       passport.authenticate('local')(req, res, function() {
-        res.send('signed up!!!');
+        res.redirect("/");
       });
     }
   );
