@@ -4103,7 +4103,7 @@ select {
 #header .submenu-toggle {
   display: none;
 }
-#header.second-version {
+/* #header.second-version {
   position: fixed;
   top: auto;
 }
@@ -4149,17 +4149,17 @@ select {
   #header.third-version .header-logo {
     top: 90px;
   }
-}
+} */
 #header.fourth-version .container {
-  padding: 0 30px;
+  padding: 0 10px;
 }
 #header.fourth-version .header-inner {
-  padding: 12px 0;
+  padding: 0;
   background: #171c24;
 }
 #header.fourth-version .header-inner .header-logo {
-  position: relative;
-  padding: 0 15px;
+  position: pull-left;
+  padding: 0;
   background: transparent;
 }
 #header.fourth-version .header-inner .header-logo.active {
@@ -4182,11 +4182,11 @@ select {
 }
 @media (max-width: 992px) {
   #header.fourth-version .header-inner .header-banner {
-    margin-top: 16px;
+    margin-top: 10px;
   }
 }
 #header.fourth-version .header-inner .header-search {
-  margin-right: 20px;
+  margin-right: 10px;
   display: inline-block;
 }
 #header.fourth-version .header-inner .header-search.active form {
@@ -4199,7 +4199,7 @@ select {
   cursor: pointer;
   font-size: 16px;
 }
-#header.fourth-version .header-inner .header-search input {
+/* #header.fourth-version .header-inner .header-search input {
   padding: 5px;
   margin-right: -20px;
   width: 95px;
@@ -4207,19 +4207,19 @@ select {
   background: transparent;
   height: 25px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-}
-@media (max-width: 1200px) {
+} */
+/* @media (max-width: 1200px) {
   #header.fourth-version .header-inner .header-search {
     display: none;
   }
-}
+} */
 #header.fourth-version .header-inner .header-social {
   display: inline-block;
 }
 #header.fourth-version .header-inner .header-social .social {
-  position: relative;
+  position: right;
   padding-left: 10px;
-  margin: 30px 0 0 25px;
+  margin: 10px 0 0 10px;
   border-left: 1px dashed rgba(255, 255, 255, 0.5);
 }
 #header.fourth-version .header-inner .header-social .social li {
@@ -4257,7 +4257,7 @@ select {
   background: #2a3444;
 }
 #header.fourth-version .header-navbar nav > ul > li {
-  padding: 0 50px;
+  padding: 0 20px;
   margin: 0;
   border-right: 1px dashed rgba(255, 255, 255, 0.5);
 }
