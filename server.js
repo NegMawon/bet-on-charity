@@ -56,19 +56,19 @@ app.get("/", function(req, res) {
   Game.find(function(err, allGames) {
     if (err) { res.status(500).json({ error: err.message });}
 
-      //show games of logged in user
+      //get all bets and extract sum of bet amounts
       Bet.find({}, function(err, foundBets){
-      //console.log("foundBets", foundBets[0].amount);
+
         var totalBetsAmounts = 0;
         foundBets.forEach(function(bet){
-          console.log(bet.amount);
+          // console.log(bet.amount);
           if(bet.amount){
             totalBetsAmounts += bet.amount
           }
 
         })
         // foundBets.map(bet => totalBetsAmounts += bet.amount);
-        console.log(totalBetsAmounts);
+        // console.log(totalBetsAmounts);
 
         res.render("index", { games: allGames, user: req.user, bets: foundBets, totalBetsAmounts: totalBetsAmounts});
       })
@@ -96,6 +96,7 @@ app.post("/confirmBet", function(req, res) {
   // function saveBet(newBet, res){
   console.log(req.body);
   var newBet = new Bet({
+    gameId: req.body.gameId,
     team: req.body.team,
     charity: req.body.charity,
     amount: req.body.amount
@@ -166,7 +167,7 @@ app.get("/allGames", function(req, res) {
     // "http://api.sportradar.us/ncaamb/trial/v4/en/games/e8ba508c-3a41-4cd5-bfad-5a60f2738420/boxscore.json?api_key=x4nyauywjpp2w4mpg7xwautr",
     function(error, response, body) {
       res.json(body);
-      console.log(body);
+      // console.log(body);
       // console.log(response.body);
 //
 //       // console.log('error:', error); // Print the error if one occurred
