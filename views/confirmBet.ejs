@@ -16,9 +16,10 @@
   </div>
   <!-- //this works like a pass-though for form data. key: type hidden -->
   <form method="POST" action="/confirmBet">
+
     <input type="hidden" name="charity" value="<%= bet.charity %>">
-      <input type="hidden" name="team" value="<%= bet.team %>">
-        <input type="hidden" name="amount" value="<%= bet.amount %>">
+    <input type="hidden" name="team" value="<%= bet.team %>">
+    <input type="hidden" name="amount" value="<%= bet.amount %>">
   <input class="submit" type='submit'>
 </form>
 
