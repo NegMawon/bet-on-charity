@@ -166,7 +166,7 @@ app.get("/allGames", function(req, res) {
     // "http://api.sportradar.us/ncaamb/trial/v4/en/games/e8ba508c-3a41-4cd5-bfad-5a60f2738420/boxscore.json?api_key=x4nyauywjpp2w4mpg7xwautr",
     function(error, response, body) {
       res.json(body);
-      console.log(body[0].Games);
+      console.log(body);
       // console.log(response.body);
 // 
 //       // console.log('error:', error); // Print the error if one occurred
