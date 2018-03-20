@@ -95,6 +95,7 @@ app.post("/confirmBet", function(req, res) {
   // function saveBet(newBet, res){
   console.log("confirm req.body",req.body);
   var newBet = new Bet({
+    email: req.body.email,
     gameId: req.body.gameId,
     team: req.body.team,
     charity: req.body.charity,
@@ -173,7 +174,8 @@ app.post('/signup', function (req, res) {
     req.body.password,
     function (err, newUser) {
       passport.authenticate('local')(req, res, function() {
-        res.send('signed up!!!');
+        // res.send('signed up!!!');
+        res.redirect("/");
       });
     }
   );

@@ -5,7 +5,9 @@ var BetSchema = new Schema({
   team: String,
   charity: String,
   amount: Number,
-  gameId: String
+  gameId: String,
+  email: String,
+  username: String
 });
 
 var Bet = mongoose.model("Bet", BetSchema);
