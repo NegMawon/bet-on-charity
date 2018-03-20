@@ -10,7 +10,8 @@ var express = require("express"),
   session = require("express-session"),
   passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy,
-  request = require("request");
+  request = require("request"),
+  $ = require("jquery");
 // connect to db models
 var db = require("./models"),
   Game = db.Game,
@@ -55,19 +56,19 @@ app.get("/", function(req, res) {
   Game.find(function(err, allGames) {
     if (err) { res.status(500).json({ error: err.message });}
 
-      //show games of logged in user
+      //get all bets and extract sum of bet amounts
       Bet.find({}, function(err, foundBets){
-      //console.log("foundBets", foundBets[0].amount);
+
         var totalBetsAmounts = 0;
         foundBets.forEach(function(bet){
-          console.log(bet.amount);
+          // console.log(bet.amount);
           if(bet.amount){
             totalBetsAmounts += bet.amount
           }
 
         })
         // foundBets.map(bet => totalBetsAmounts += bet.amount);
-        console.log(totalBetsAmounts);
+        // console.log(totalBetsAmounts);
 
         res.render("index", { games: allGames, user: req.user, bets: foundBets, totalBetsAmounts: totalBetsAmounts});
       })
@@ -95,6 +96,7 @@ app.post("/confirmBet", function(req, res) {
   // function saveBet(newBet, res){
   console.log(req.body);
   var newBet = new Bet({
+    gameId: req.body.gameId,
     team: req.body.team,
     charity: req.body.charity,
     amount: req.body.amount
@@ -133,18 +135,44 @@ app.get("/games/:id", function(req, res) {
     }
   });
 });
-
+// 
+// app.get("/allGames", function(req, res) {
+//   var params = {
+//            format: JSON,
+//            date: "2018-FEB-27"
+//        };
+// $.ajax({
+//     url: "https://api.fantasydata.net/v3/cbb/scores/JSON/TeamGameStatsByDate/2018-FEB-27",
+//     beforeSend: function(xhrObj){
+//         // Request headers
+//         xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","e415ccd5602b4e06870ba5c497510cbd");
+//     },
+//     type: "GET",
+//     // Request body
+//     data: "{body}",
+// })
+// .done(function(data) {
+//   console.log(data);
+//     alert("success");
+// })
+// .fail(function() {
+//     alert("error");
+// });
+// });
 app.get("/allGames", function(req, res) {
   request(
-    "http://api.sportradar.us/ncaamb/trial/v4/en/games/e8ba508c-3a41-4cd5-bfad-5a60f2738420/boxscore.json?api_key=x4nyauywjpp2w4mpg7xwautr",
+
+    "https://api.fantasydata.net/v3/cbb/scores/JSON/Tournament/sim?key=e415ccd5602b4e06870ba5c497510cbd",
+    // "http://api.sportradar.us/ncaamb/trial/v4/en/tournaments/caa4fb9e-12f1-4429-a160-8e6f4de1d84c/schedule.json?api_key=etfnchebkxf77v77xk9marar",
+    // "http://api.sportradar.us/ncaamb/trial/v4/en/games/e8ba508c-3a41-4cd5-bfad-5a60f2738420/boxscore.json?api_key=x4nyauywjpp2w4mpg7xwautr",
     function(error, response, body) {
       res.json(body);
-      console.log(body);
+      // console.log(body);
       // console.log(response.body);
-
-      // console.log('error:', error); // Print the error if one occurred
-      // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      // console.log('body:', body); // Print the HTML for the Google homepage.
+// 
+//       // console.log('error:', error); // Print the error if one occurred
+//       // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+//       // console.log('body:', body); // Print the HTML for the Google homepage.
     }
   );
 });
@@ -177,6 +205,7 @@ app.post('/signup', function (req, res) {
     }
   );
 });
+
 ////////////////////
 //  SERVER
 ///////////////////
