@@ -14,4 +14,3 @@ $.ajax({
 .fail(function() {
     alert("error");
 });
-});
