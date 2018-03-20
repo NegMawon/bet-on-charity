@@ -6,7 +6,6 @@ var BetSchema = new Schema({
   charity: String,
   amount: Number,
   gameId: String,
-  email: String,
   username: String
 });
 
