@@ -60,14 +60,14 @@ app.get("/", function(req, res) {
       //console.log("foundBets", foundBets[0].amount);
         var totalBetsAmounts = 0;
         foundBets.forEach(function(bet){
-          console.log(bet.amount);
+          // console.log(bet.amount);
           if(bet.amount){
             totalBetsAmounts += bet.amount
           }
 
         })
         // foundBets.map(bet => totalBetsAmounts += bet.amount);
-        console.log(totalBetsAmounts);
+        // console.log(totalBetsAmounts);
 
         res.render("index", { games: allGames, user: req.user, bets: foundBets, totalBetsAmounts: totalBetsAmounts});
       })
@@ -93,8 +93,9 @@ app.post("/", function(req, res) {
 
 app.post("/confirmBet", function(req, res) {
   // function saveBet(newBet, res){
-  console.log(req.body);
+  console.log("confirm req.body",req.body);
   var newBet = new Bet({
+    gameId: req.body.gameId,
     team: req.body.team,
     charity: req.body.charity,
     amount: req.body.amount

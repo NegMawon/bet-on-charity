@@ -4,9 +4,8 @@ var mongoose = require("mongoose"),
 var BetSchema = new Schema({
   team: String,
   charity: String,
-  amount: Number
-  // ,
-  // gameId: Number
+  amount: Number,
+  gameId: String
 });
 
 var Bet = mongoose.model("Bet", BetSchema);
