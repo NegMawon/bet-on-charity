@@ -4,9 +4,11 @@ var mongoose = require("mongoose"),
   passportLocalMongoose = require("passport-local-mongoose");
 
 var UserSchema = new Schema({
-  username: String,
   admin: {type: Boolean, default:false},
-  tier: {type: Number, defalt:0},
+  firstname: String,
+  lastname: String,
+  email: String,
+  username: String,
   password: String
 });
 

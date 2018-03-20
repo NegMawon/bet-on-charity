@@ -21,7 +21,7 @@
  <!-- custom script -->
  <script type="text/javascript" src="/scripts/app.js"></script>
 
- <title>betoncharity</title>
+ <!-- <title>haha</title> -->
 </head>
 <body>
 
@@ -40,6 +40,21 @@
             <h1 class="">NCAAMB</h1> <p>total charity contributions: <%=totalBetsAmounts%> </p>
           </div>
         </div>
+
+        <div>
+          <% if(!user) { %>
+            <a href="/login">Log in</a>
+            <a href="/signup">Sign up</a>
+          <% } else { %>
+            <div>Welcome, <%= user.username %>!</div>
+            <div>Welcome, <%= user.firstname %>!</div>
+            <a href="/logout">Log out</a>
+          <% } %>
+          </div>
+
+
+
+          <hr>
 
 
 
@@ -112,13 +127,16 @@
                         <option value="<%= game.team1 %>"><%= game.team1 %></option>
                         <option value="<%= game.team2 %>"><%= game.team2 %></option>
                     </select>
-                    <input type="hidden" name="gameId" value="<%= game._id %>">
+
+                    <input type="hidden" name="email" value=<%= user.username %>>
+                    <input type="hidden" name="gameId" value=<%= game._id %>>
                     <input class="submit" type='submit'>
                 </form>
 
               </div>
 
               <%= game._id %>
+
               </li>
             <% } %>
         </ul>
