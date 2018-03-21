@@ -11,7 +11,21 @@ var express = require("express"),
   passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy,
   request = require("request"),
-  $ = require("jquery");
+  $ = require("jquery"),
+  mongoose = require('mongoose'),
+  mongodb = require('mongodb'),
+  http = require('http'),
+  nconf = require('nconf');
+
+nconf.argv().env().file('keys.json');
+
+const user = nconf.get('mongoUser');
+const pass = nconf.get('mongoPass');
+const host = nconf.get('mongoHost');
+const port = nconf.get('mongoPort');
+
+mongoose.connect(`mongodb://${user}:${pass}@ds213229.mlab.com:13229/bet-on-charity`, { promiseLibrary: global.Promise });
+
 // connect to db models
 var db = require("./models"),
   Game = db.Game,
