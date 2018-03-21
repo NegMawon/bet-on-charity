@@ -1,0 +1,76 @@
+
+.rotated {
+  transform: rotate(-45deg); /* Equal to rotateZ(45deg) */
+  background-color: #777;
+  color: white;
+  text-align: center;
+  position: relative;
+  top: -73px;
+  left: -189px;
+}
+.amount-charity {
+  display: flex;
+  justify-content: space-evenly;
+}
+.versus {
+  display: flex;
+  justify-content: space-evenly;
+}
+.vs {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.versus p,
+select {
+  display: flex;
+  flex-direction: column;
+}
+.textcentered{
+    display: flex;
+    height: 100px;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center;
+    vertical-align: middle; */
+    border-radius: 50%;
+    background: slategray;
+    color: white;
+}
+
+.versus h1 {
+  /* margin: 0; */
+}
+
+input,
+select {
+  width: 7em;
+}
+.submit {
+  background: slategray;
+  color: white;
+}
+
+.submit:hover {
+  background: darkgray;
+  color: white;
+}
+
+input:invalid+span:after {
+  content: '✖';
+  color: red;
+  padding-left: 5px;
+}
+
+input:valid+span:after {
+  content: '✓';
+  color: green;
+  padding-left: 5px;
+}
+/* .currencyinput {
+    border: 1px inset #ccc;
+}
+.currencyinput input {
+    border: 0;
+} */
