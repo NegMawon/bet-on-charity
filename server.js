@@ -12,7 +12,7 @@ var express = require("express"),
   LocalStrategy = require("passport-local").Strategy,
   request = require("request"),
   $ = require("jquery"),
-<<<<<<< HEAD
+
   mongoose = require('mongoose'),
   mongodb = require('mongodb'),
   http = require('http'),
@@ -24,12 +24,9 @@ const user = nconf.get('mongoUser');
 const pass = nconf.get('mongoPass');
 const host = nconf.get('mongoHost');
 const port = nconf.get('mongoPort');
-
-mongoose.connect(`mongodb://${user}:${pass}@ds213229.mlab.com:13229/bet-on-charity`, { promiseLibrary: global.Promise });
-
-=======
   fetch = require("node-fetch");
->>>>>>> 82edca154f5c9a9060df83331d3b232d2e930345
+
+
 // connect to db models
 var db = require("./models"),
   Game = db.Game,
@@ -187,11 +184,11 @@ fetch(url)
   .catch(error => {
     console.log(error);
   });
-  
-  
+
+
   function createGamesFromData(json){
     json.Games.forEach(function (game){
-    
+
       var newGame = new Game({
         user: null,
         email: null,
@@ -206,12 +203,12 @@ fetch(url)
           return console.log("save error: " + err);
         }
         console.log("Game saved:", game);
-      
+
       });
-      
+
     }) //end forEach
   } //end createGamesFromData
-    
+
 });
 
 //////////////////////

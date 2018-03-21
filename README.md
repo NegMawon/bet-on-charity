@@ -55,8 +55,6 @@ app.post('/signup', function (req, res) {
 });
 ```
 
-![image of code, Object Literals](images/objectLiteral.png "Object Literals")
-
 Convert API JSON to Game objects
 
 ```function createGamesFromData(json){

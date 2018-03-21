@@ -63,12 +63,12 @@
 
           <% for (let game of games) { %>
               <li class="list-group-item game" data-id="<%= game._id %>">
-                <div class="versus">
+                <div class="versus"><img src="/img/kans-uk.jpg">
                   <article class="textcentered">
                     <p><%= game.gameAwayTeam %></p>
                   </article>
                     <h1 class="vs">VS.</h1>
-                <article class="textcentered">
+                <article class="textcentered"> <img src="/img/loyola-Nevada.jpg">
                   <p><%= game.gameHomeTeam %></p>
                 </article>
 
@@ -92,14 +92,18 @@
                         <option value="<%= game.gameHomeTeam %>"><%= game.gameHomeTeam %></option>
                     </select>
 
-
+<div
                     <input type="hidden" name="gameId" value=<%= game._id %>>
                     <input class="submit" type='submit'>
                 </form>
 
-              </div>
 
-              <%= game._id %>
+
+<!-- 
+                <img src="/img/sem-gonzag.jpg">
+                <img src ="/img/texam-mich.jpg"> -->
+
+              </div>
 
               </li>
             <% } %>
