@@ -1,3 +1,4 @@
+![image of wireframe](readmeAssets/landing.png "wireframe")
 # BettingonCharity.org - a web application for Sports Betting that will donate proceeds to charity.
 
 Initial MVP is to pull March Madness NCAA Mens Basketball games, and create a website with the following:
@@ -15,6 +16,10 @@ Mongoose, Express, Node.js, JavaScript, HTML5, CSS3, EJS, jQuery, Git, Github, H
 Whiteboard basic concept
 
 Create wireframe using Figma
+
+![image of wireframe](readmeAssets/wireframe0.png "wireframe")
+
+![image of wireframe](readmeAssets/wireframe1.png "wireframe")
 
 Optimize images and files (compression, minification, etc.)
 
