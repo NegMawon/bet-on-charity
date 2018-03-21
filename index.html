@@ -8,8 +8,8 @@
   <title>Betting on Charity</title>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/owl.carousel.css">
+  <link rel="stylesheet" href="public/styles/style.css">
+  <link rel="stylesheet" href="public/styles/owl.carousel.css">
 
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -69,6 +69,16 @@
       </div>
     </div>
   </header>
+  <div>
+    <% if(!user) { %>
+      <a href="/login">Log in</a>
+      <a href="/signup">Sign up</a>
+    <% } else { %>
+      <div style="display: none;">Welcome, <%= user.username %>!</div>
+      <div>Welcome, <%= user.firstname %>!</div>
+      <a href="/logout">Log out</a>
+    <% } %>
+    </div>
   <!-- End Header -->
 
   <!-- Start Intro -->
@@ -132,15 +142,15 @@
 </div> <!-- end #main-wrapper -->
 
 <!-- Scripts -->
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/scripts.js"></script>
-<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-<script type="text/javascript" src="js/jquery.ba-outside-events.min.js"></script>
-<script type="text/javascript" src="js/tab.js"></script>
-<script type="text/javascript" src='js/bootstrap-datepicker.js'></script>
-<script type="text/javascript" src="js/jquery.timelinr-0.9.54.js"></script>
-<script type="text/javascript" src="twitter/jquery.tweet.min.js"></script>
-<script type="text/javascript" src="//apis.google.com/js/platform.js">
+<script type="text/javascript" src="/scripts/js/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/js/scripts.js"></script>
+<script type="text/javascript" src="/scripts/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/scripts/js/jquery.ba-outside-events.min.js"></script>
+<script type="text/javascript" src="/scripts/js/tab.js"></script>
+<script type="text/javascript" src='/scripts/js/bootstrap-datepicker.js'></script>
+<script type="text/javascript" src="/scripts/js/jquery.timelinr-0.9.54.js"></script>
+<script type="text/javascript" src="/scripts/twitter/jquery.tweet.min.js"></script>
+<script type="text/javascript" src="/scripts/apis.google.com/js/platform.js">
   {lang: 'pl'}
 </script>
 
