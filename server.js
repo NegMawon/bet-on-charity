@@ -199,6 +199,14 @@ app.post('/signup', function (req, res) {
   );
 });
 
+// log in user
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user);
+  //res.send('logged in!!!'); // sanity check
+  res.redirect('/'); // preferred!
+});
+
+
 ////////////////////
 //  SERVER
 ///////////////////
