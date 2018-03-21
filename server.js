@@ -76,6 +76,33 @@ app.get("/", function(req, res) {
 
   });;
 });
+
+
+app.get("/showGames", function(req, res) {
+  // res.sendFile('views/index', { root : __dirname});
+  // res.render("index", { games: allGames});
+  Game.find(function(err, allGames) {
+    if (err) { res.status(500).json({ error: err.message });}
+
+      //show games of logged in user
+      Bet.find({}, function(err, foundBets){
+      //console.log("foundBets", foundBets[0].amount);
+        var totalBetsAmounts = 0;
+        foundBets.forEach(function(bet){
+          console.log(bet.amount);
+          if(bet.amount){
+            totalBetsAmounts += bet.amount
+          }
+
+        })
+        // foundBets.map(bet => totalBetsAmounts += bet.amount);
+        console.log(totalBetsAmounts);
+
+        res.render("showGames", { games: allGames, user: req.user, bets: foundBets, totalBetsAmounts: totalBetsAmounts});
+      })
+
+  });;
+});
 //create new user bet and redirect to confirmation page
 app.post("/", function(req, res) {
   console.log("req.body", req.body);
@@ -101,7 +128,7 @@ app.post("/confirmBet", function(req, res) {
     // res.json(bet);
     // res.render({bet: newBet});
     // res.render("confirmBet", { bet: bet });
-    res.redirect("/");
+    res.redirect("/showGames");
   });
 });
 
@@ -193,19 +220,32 @@ app.post('/signup', function (req, res) {
     req.body.password,
     function (err, newUser) {
       passport.authenticate('local')(req, res, function() {
-        res.redirect("/");
+        res.redirect("/showGames");
       });
     }
   );
 });
 
 // log in user
+app.get('/login', function (req, res) {
+ res.render('login');
+});
+
 app.post('/login', passport.authenticate('local'), function (req, res) {
   console.log(req.user);
   //res.send('logged in!!!'); // sanity check
-  res.redirect('/'); // preferred!
+  res.redirect("/showGames"); // preferred!
 });
 
+
+// log out user
+app.get("/logout", function(req, res) {
+  console.log("BEFORE logout", JSON.stringify(req.user));
+  //req.user is true of logged in, and false of logged out
+  req.logout();
+  console.log("AFTER logout", JSON.stringify(req.user));
+  res.redirect("/");
+});
 
 ////////////////////
 //  SERVER

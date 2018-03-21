@@ -38,7 +38,18 @@
             <li><a href="#footer">Contact</a></li>
             <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
-            <a href="/signup"><span>Sign up/Log in</span></a>
+            <div>
+              <% if(!user) { %>
+                <a href="/login">Log in</a>
+                <a href="/signup">Sign up</a>
+              <% } else { %>
+                <div style="display: none;">Welcome, <%= user.username %>!</div>
+                <div>Welcome, <%= user.firstname %>!</div>
+                <a href="/logout">Log out</a>
+              <% } %>
+              </div>
+              <hr>
+            <!-- <a href="/signup"><span>Sign up/Log in</span></a> -->
           </ul>
         </nav>
         <button class="navbar-toggle">
@@ -47,6 +58,8 @@
       </div>
     </div>
   </header>
+
+
   <!-- End Header -->
 
   <!-- Start Intro -->

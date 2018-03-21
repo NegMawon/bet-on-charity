@@ -1,188 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
- <!-- set viewport to device width to make site responsive -->
- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Betting on Charity</title>
 
- <!-- bootstrap css -->
- <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/styles/owl.carousel.css">
 
- <!-- custom styles -->
- <link rel="stylesheet" type="text/css" href="/styles/style.css">
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
- <!-- jquery -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
- <!-- bootstrap js -->
- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
- <!-- custom script -->
- <script type="text/javascript" src="/scripts/app.js"></script>
-
- <!-- <title>haha</title> -->
- <!-- Stylesheets -->
- <link rel="stylesheet" href="css/style.css">
- <!-- <link rel="stylesheet" href="css/owl.carousel.css"> -->
-
- <!-- Google Fonts -->
- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
- <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <script src="scripts/js/min/media.match.min.js"></script>
 
 </head>
+
 <body>
+<div id="main-wrapper">
 
+  <!-- Start Header -->
+  <header id="header" class="fourth-version">
+    <div class="container">
+      </div>
+      <div class="header-navbar col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+        <nav class="navigation">
 
-  <!-- page content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-
-          <!-- Start Tab Lorem -->
-          <div class="tab-pane fade" id="lorem">
-
-            <!-- Start Result -->
-            <div class="result col-lg-6 col-lg-offset-0 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 clearfix">
-              <h4 class="border">Latest Result</h4>
-              <div class="team">
-                <figure>
-                  <img src="img/team1.jpg" alt="" class="team-background">
-                  <img src="img/team1-logo.png" alt="" class="team-logo">
-                  <figcaption>
-                    FC Lorem
-                  </figcaption>
-                </figure>
+          <ul class="list-inline text-center custom-list">
+            <a href="index.html" id="logo-index"><img src="img/header-banner.png" alt=""></a>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#footer">Contact</a></li>
+            <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+            <div>
+              <% if(!user) { %>
+                <a href="/login">Log in</a>
+                <a href="/signup">Sign up</a>
+              <% } else { %>
+                <div style="display: none;">Welcome, <%= user.username %>!</div>
+                <div>Welcome, <%= user.firstname %>!</div>
+                <a href="/logout">Log out</a>
+              <% } %>
               </div>
-              <div class="match-details">
-                <header class="match-name"><h5>Match 4</h5></header>
-                <div class="score">
-                  <span class="color">3</span>
-                  <span>:</span>
-                  <span>1</span>
-                </div>
-                <footer class="schedule">
-                  <span class="team-name">Sao Paolo</span>
-                  <span class="time">30 May 23:00</span>
-                </footer>
-              </div>
-              <div class="team">
-                <figure>
-                  <img src="img/team2.jpg" alt="" class="team-background">
-                  <img src="img/team2-logo.png" alt="" class="team-logo">
-                  <figcaption>
-                    AFC Ipsum
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-            <!-- End Result -->
-
-            <!-- Start Upcoming -->
-            <div class="upcoming col-lg-6 col-lg-offset-0 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 clearfix">
-              <h4 class="border">Upcoming Matches</h4>
-              <ul class="matches custom-list">
-                <li class="match">
-                  <div class="team text-left">
-                    <img src="img/team-upcoming.png" alt=""><span>AFC Consequat</span>
-                  </div>
-                  <div class="schedule">
-                    <span class="team-name">Sao Paolo</span>
-                    <span class="time">30 May 23:00</span>
-                  </div>
-                  <div class="team right text-right">
-                    <span>Magenta FC</span>
-                    <img src="img/team-upcoming2.png" alt="">
-                  </div>
-                </li>
-                <li class="match">
-                  <div class="team text-left">
-                    <img src="img/team-upcoming3.png" alt=""><span>Andrea FC</span>
-                  </div>
-                  <div class="schedule">
-                    <span class="team-name">Sao Paolo</span>
-                    <span class="time">30 May 23:00</span>
-                  </div>
-                  <div class="team right text-right">
-                    <span>Magenta United</span>
-                    <img src="img/team-upcoming4.png" alt="">
-                  </div>
-                </li>
-                <li class="match">
-                  <div class="team text-left">
-                    <img src="img/team-upcoming5.png" alt=""><span>Xavier United</span>
-                  </div>
-                  <div class="schedule">
-                    <span class="team-name">Sao Paolo</span>
-                    <span class="time">30 May 23:00</span>
-                  </div>
-                  <div class="team right text-right">
-                    <span>Altair FC</span>
-                    <img src="img/team-upcoming6.png" alt="">
-                  </div>
-                </li>
-                <li class="match">
-                  <div class="team text-left">
-                    <img src="img/team-upcoming7.png" alt=""><span>Azkalz FC</span>
-                  </div>
-                  <div class="schedule">
-                    <span class="team-name">Sao Paolo</span>
-                    <span class="time">30 May 23:00</span>
-                  </div>
-                  <div class="team right text-right">
-                    <span>Juggernaut</span>
-                    <img src="img/team-upcoming8.png" alt="">
-                  </div>
-                </li>
-                <li class="match">
-                  <div class="team text-left">
-                    <img src="img/team-upcoming3.png" alt=""><span>Andrea FC</span>
-                  </div>
-                  <div class="schedule">
-                    <span class="team-name">Sao Paolo</span>
-                    <span class="time">30 May 23:00</span>
-                  </div>
-                  <div class="team right text-right">
-                    <span>Magenta United</span>
-                    <img src="img/team-upcoming4.png" alt="">
-                  </div>
-                </li>
-                <li class="match">
-                  <div class="team text-left">
-                    <img src="img/team-upcoming5.png" alt=""><span>Xavier United</span>
-                  </div>
-                  <div class="schedule">
-                    <span class="team-name">Sao Paolo</span>
-                    <span class="time">30 May 23:00</span>
-                  </div>
-                  <div class="team right text-right">
-                    <span>Altair FC</span>
-                    <img src="img/team-upcoming6.png" alt="">
-                  </div>
-                </li>
-              </ul>
-              <a class="button text-left prev"><i class="fa fa-angle-left"></i><span>Previous</span></a>
-              <div class="match-week">
-                <div class="datepicker-inner" data-date="12/03/2012">Week <span class="count">7</span><i class="fa fa-angle-down"></i></div>
-              </div>
-              <a class="button text-right next"><span>Next</span><i class="fa fa-angle-right"></i></a>
-            </div>
-            <!-- End Upcoming -->
-
-          </div>
-          <!-- End Tab Lorem -->
-
-        <div>
-          <% if(!user) { %>
-            <a href="/login">Log in</a>
-            <a href="/signup">Sign up</a>
-          <% } else { %>
-            <div style="display: none;">Welcome, <%= user.username %>!</div>
-            <div>Welcome, <%= user.firstname %>!</div>
-            <a href="/logout">Log out</a>
-          <% } %>
-          </div>
-          <hr>
+              <hr>
+            <!-- <a href="/signup"><span>Sign up/Log in</span></a> -->
+          </ul>
+        </nav>
+        <button class="navbar-toggle">
+          <i class="fa fa-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
         <!-- list of games -->
         <ul class="list-group" id="games-list">
 
