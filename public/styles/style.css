@@ -454,7 +454,7 @@ a.bg-danger:hover {
 }
 ul,
 ol {
-  margin-top: 0;
+  margin-top: 140px;
   margin-bottom: 8.5px;
 }
 ul ul,
@@ -3693,7 +3693,7 @@ h4.border:after {
   transition: all 0.2s ease-in-out;
 }
 select {
-  display: none;
+  /* display: none; */
 }
 .uou-custom-select {
   position: relative;
