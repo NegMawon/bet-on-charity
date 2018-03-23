@@ -140,7 +140,7 @@ app.post("/confirmBet", function(req, res) {
     // res.json(bet);
     // res.render({bet: newBet});
     // res.render("confirmBet", { bet: bet });
-    res.redirect("/");
+    res.redirect("/showGames");
   });
 });
 
@@ -187,24 +187,49 @@ app.get("/games/:id", function(req, res) {
 //     alert("error");
 // });
 // });
+
+
 app.get("/allGames", function(req, res) {
-  request(
 
-    "https://api.fantasydata.net/v3/cbb/scores/JSON/Tournament/sim?key=e415ccd5602b4e06870ba5c497510cbd",
-    // "http://api.sportradar.us/ncaamb/trial/v4/en/tournaments/caa4fb9e-12f1-4429-a160-8e6f4de1d84c/schedule.json?api_key=etfnchebkxf77v77xk9marar",
-    // "http://api.sportradar.us/ncaamb/trial/v4/en/games/e8ba508c-3a41-4cd5-bfad-5a60f2738420/boxscore.json?api_key=x4nyauywjpp2w4mpg7xwautr",
-    function(error, response, body) {
-      res.json(body);
-      console.log(body);
-      // console.log(response.body);
-//
-//       // console.log('error:', error); // Print the error if one occurred
-//       // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//       // console.log('body:', body); // Print the HTML for the Google homepage.
-    }
-  );
+
+const url =
+  "https://api.fantasydata.net/v3/cbb/scores/JSON/Tournament/sim?key=e415ccd5602b4e06870ba5c497510cbd";
+fetch(url)
+  .then(response => {
+    response.json().then(json => {
+      res.json(
+        createGamesFromData(json)
+      );
+    });
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+
+  function createGamesFromData(json){
+    json.Games.forEach(function (game){
+
+      var newGame = new Game({
+        user: null,
+        email: null,
+        gameDay: game.Day,
+        gameAwayTeam: game.AwayTeam,
+        awayTeamScore: game.AwayTeamScore,
+        gameHomeTeam: game.HomeTeam,
+        homeTeamScore: game.HomeTeamScore
+      });
+      newGame.save(function(err, game) {
+        if (err) {
+          return console.log("save error: " + err);
+        }
+        console.log("Game saved:", game);
+
+      });
+
+    }) //end forEach
+  } //end createGamesFromData
 });
-
 //////////////////////
 //// Auth Routes ////
 
@@ -228,10 +253,31 @@ app.post('/signup', function (req, res) {
     req.body.password,
     function (err, newUser) {
       passport.authenticate('local')(req, res, function() {
-        res.redirect("/");
+        res.redirect("/showGames");
       });
     }
   );
+});
+
+// log in user
+app.get('/login', function (req, res) {
+ res.render('login');
+});
+
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(req.user);
+  //res.send('logged in!!!'); // sanity check
+  res.redirect("/showGames"); // preferred!
+});
+
+
+// log out user
+app.get("/logout", function(req, res) {
+  console.log("BEFORE logout", JSON.stringify(req.user));
+  //req.user is true of logged in, and false of logged out
+  req.logout();
+  console.log("AFTER logout", JSON.stringify(req.user));
+  res.redirect("/");
 });
 
 ////////////////////

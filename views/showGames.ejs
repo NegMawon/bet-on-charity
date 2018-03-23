@@ -39,15 +39,9 @@
             <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
             <div>
-              <% if(!user) { %>
-                <a href="/login">Log in</a>
-                <a href="/signup">Sign up</a>
-              <% } else { %>
-                <div style="display: none;">Welcome, <%= user.username %>!</div>
-                <div>Welcome, <%= user.firstname %>!</div>
-                <a href="/logout">Log out</a>
-              <% } %>
-              </div>
+              <div>Welcome, <%= user.firstname %>!</div>
+              <a href="/logout">Log out</a>
+            </div>
 
 
             </ul>

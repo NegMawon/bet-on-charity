@@ -1,144 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
- <!-- set viewport to device width to make site responsive -->
- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Betting on Charity</title>
 
- <!-- bootstrap css -->
- <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="stylesheet" href="/styles/owl.carousel.css">
+  <link rel="stylesheet" href="/styles/style2.css">
 
- <!-- custom styles -->
- <link rel="stylesheet" type="text/css" href="/styles/style.css">
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
- <!-- jquery -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="scripts/js/min/media.match.min.js"></script>
 
- <!-- bootstrap js -->
- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
- <!-- custom script -->
- <script type="text/javascript" src="/scripts/app.js"></script>
-
- <!-- <title>haha</title> -->
 </head>
+
 <body>
+<div id="main-wrapper">
+
+  <!-- Start Header -->
+  <header id="header" class="fourth-version">
+    <div class="container">
+      </div>
+      <div class="header-navbar col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+        <nav class="navigation">
+
+          <ul class="list-inline text-center custom-list">
+            <a href="index.html" id="logo-index"><img src="images/header-banner.png" alt=""></a>
+            <!-- <li><a href="#">Home</a></li> -->
+            <li><a href="#about">About</a></li>
+            <!-- <li><a href="#games">Games</a></li> -->
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#footer">Contact</a></li>
+            <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+            <% if(!user) { %>
+              <a href="/signup">Log in/Sign up</a>
+            <div>
+              <% } else { %>
+                <div style="display: none;">Welcome, <%= user.username %>!</div>
+                <div>Welcome, <%= user.firstname %>!</div>
+                <a href="/logout">Log out</a>
+              <% } %>
+              </div>
+              <hr>
+            <!-- <a href="/signup"><span>Sign up/Log in</span></a> -->
+          </ul>
+        </nav>
+        <button class="navbar-toggle">
+          <i class="fa fa-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
 
 
-  <!-- page content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
+  <!-- End Header -->
 
+  <!-- Start Intro -->
+  <div class="intro">
+    <div id="home-slider" class="owl-carousel owl-theme">
+      <div class="item">
+        <img src="images/slider/bg1.jpg" alt="">
+        <div class="slide-content extra col-lg-6 col-lg-offset-3 col-md-12 col-sm-12 text-center">
+          <h1>Betting on Charity!</h1>
+          <h1>You already donate, right?</h1>
 
-        <div class="well">
-          <div class="container">
-            <div class="page-header">
-              <h1>Predict the winner <small>support a charity</small></h1>
-            </div>
-            <h1 class="">NCAAMB</h1> <p>total charity contributions:<%=bets.foundBets%><%=totalBetsAmounts%> </p>
-          </div>
         </div>
-
-        <div>
-          <% if(!user) { %>
-            <a href="/login">Log in</a>
-            <a href="/signup">Sign up</a>
-          <% } else { %>
-            <div>Welcome, <%= user.username %>!</div>
-            <div>Welcome, <%= user.firstname %>!</div>
-            <a href="/logout">Log out</a>
-          <% } %>
-          </div>
-
-
-
-          <hr>
-
-
-
-        <!-- list of games -->
-        <ul class="list-group" id="games-list">
-
-          <% for (let game of games) { %>
-              <li class="list-group-item game" data-id="<%= game._id %>">
-
-                <!-- game label (title) -->
-                <!-- <a href="/games/<%= game._id %>" class="games label label-default"><%= game.title %></a> -->
-
-                <div class="versus">
-
-                  <article class="textcentered">
-                    <p><%= game.gameAwayTeam %></p>
-                    <!-- <a href="javascript:void(0)" class="selectedTeam" data-toggle="collapse" data-target="<%= game.gameAwayTeam %>"></a>  -->
-
-                  </article>
-
-                    <!-- <span class="glyphicon glyphicon-ok-sign"></span> -->
-
-
-                    <h1 class="vs">VS.</h1>
-                <!-- <div class="amount-charity">
-
-                  <form method="POST" action="/confirmBet">
-                      <span class="currencyinput">$</span><input type="number" name="amount" value="1" min="1" required placeholder"bet amount">
-                      <span class="validity"></span>
-                      <select name="charitiy" class="charity_category">
-                          <option value="Homeless">Homeless</option>
-                          <option value="Animals">Animals</option>
-                          <option value="Prevention">Prevention</option>
-                      </select>
-                      <select name="team" class="team-selector">
-                        //https://stackoverflow.com/questions/8605516/default-select-option-as-blank
-                          <option disabled selected value> -- select a team -- </option>
-                          <option value="<%= game.gameAwayTeam %>"><%= game.gameAwayTeam %></option>
-                          <option value="<%= game.gameHomeTeam %>"><%= game.gameHomeTeam %></option>
-                      </select>
-                      <input class="submit" type='submit'name ='charity'>
-                  </form>
-
-                </div> -->
-
-                <article class="textcentered">
-                  <p><%= game.gameHomeTeam %></p>
-                  <!-- icon to toggle update form -->
-                <!-- <a href="javascript:void(0)" class="selectedTeam" data-toggle="collapse" data-target="<%= game.gameHomeTeam %>"> -->
-                  <!-- <span class="glyphicon glyphicon-ok-sign"></span> -->
-                <!-- </a> -->
-              </article>
-
-              </div>
-
-              <div class="amount-charity">
-
-
-                <form method="POST" action="/">
-                    <span class="currencyinput">$</span><input type="number" name="amount" value="1" min="1" required placeholder"bet amount">
-                    <span class="validity"></span>
-                    <select name="charity" class="charity_category">
-                        <option value="Homeless">Homeless</option>
-                        <option value="Animals">Animals</option>
-                        <option value="Prevention">Prevention</option>
-                    </select>
-                    <select name="team" class="team-selector">
-                      <!-- //https://stackoverflow.com/questions/8605516/default-select-option-as-blank -->
-                        <option disabled selected value> -- select a team -- </option>
-                        <option value="<%= game.gameAwayTeam %>"><%= game.gameAwayTeam %></option>
-                        <option value="<%= game.gameHomeTeam %>"><%= game.gameHomeTeam %></option>
-                    </select>
-                    
-                    <input type="hidden" name="gameId" value=<%= game._id %>>
-                    <input class="submit" type='submit'>
-                </form>
-
-              </div>
-
-              </li>
-            <% } %>
-        </ul>
-      <!-- </div> -->
+      </div>
+      <div class="item">
+        <img src="images/slider/bg2.jpg" alt="NCAA">
+        <div class="slide-content extra col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 text-center">
+          <h1>Why not have some fun?</h1>
+          <h1>Who's going to win the NCAA 2018 Final Championship? </h1>
+          <a href="#" class="button"><span>Sign up/Login</span><i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="item">
+        <img src="images/slider/bg3.jpg" alt="">
+        <div class="slide-content extra col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 text-center">
+          <h1>Pick a game, pick a charity, make a bet!</h1>
+          <h1>You win, and Charity wins!</h1>
+          <a href="#" class="button"><span>Read More</span><i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="item">
+        <img src="images/slider/bg4.jpg" alt="">
+        <div class="slide-content extra col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 text-center">
+          <h1>Play, Donate, and Have some fun!</h1>
+  <br>
+          <a href="#" class="button"><span>Read More</span><i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="customNavigation">
+      <a class="btn prev"><i class="fa fa-angle-left"></i></a>
+      <a class="btn next"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
+  <!-- End Intro -->
+
+  <!-- Start About -->
+  <div id="about" class="about">
+
+    <!-- Start Container -->
+    <div class="container">
+      <!-- Start About -->
+      <div class="about-process">
+        <i class="fa fa-basketball-ball"></i>
+        <h1>Pick a team</h1>
+      </div>
+      <div class="about-process">
+        <i class="fa fa-dollar-sign"></i>
+        <h1>Select a charity</h1>
+      </div>
+      <div class="about-process">
+        <i class="fa fa-dollar-sign"></i>
+        <h1><i class="fa fa-dollar-sign"></i>Choose an amount</h1>
+      </div>
+      <div class="about-process">
+        <i class="fa fa-dollar-sign"></i>
+        <h1>We'll email you when the game is over.</h1>
+
+      </div>
+      <div class="about-process">
+
+          <h1><i class="fa fa-child"></i>We'll celebrate the victory and the donation!<i class="fa fa-child"> </i></h1>
+      </div>
+      <hr>
+      <div class="preamble text-center col-lg-10 col-lg-offset-1">
+        <h1>About Betting on Charity</h1>
+        <p id="about-p">We are a group of dedicated developers that wanted to create an application for the good of others!  People donate all the time, why not let them have some fun, betting on the sports teams they love?! And do good for others!? Everyone wins!</p>
+      </div>
+      <!-- End About -->
+
+    </div>
+    <!-- End Container -->
+
+</div> <!-- end #main-wrapper -->
+
+<!-- Scripts -->
+<script type="text/javascript" src="/scripts/js/jquery.min.js"></script>
+<script type="text/javascript" src="/scripts/js/scripts.js"></script>
+<script type="text/javascript" src="/scripts/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/scripts/js/jquery.ba-outside-events.min.js"></script>
+<script type="text/javascript" src="/scripts/js/tab.js"></script>
+<script type="text/javascript" src='/scripts/js/bootstrap-datepicker.js'></script>
+<script type="text/javascript" src="/scripts/js/jquery.timelinr-0.9.54.js"></script>
+<!-- <script type="text/javascript" src="/scripts/twitter/jquery.tweet.min.js"></script> -->
+<!-- <script type="text/javascript" src="/scripts/apis.google.com/js/platform.js">
+  {lang: 'pl'}
+</script> -->
+
+<script type="text/javascript">
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}
+(document, 'script', 'facebook-jssdk'));
+window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+    t._e = [];
+    t.ready = function(f) {
+        t._e.push(f);
+    };
+    return t;
+}
+(document, "script", "twitter-wjs"));
+</script>
+<!-- End Scripts -->
+</div>
 </body>
 </html>
