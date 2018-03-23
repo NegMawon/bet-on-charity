@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = NAME.ZONE.PROJECT:/https://github.com/NegMawon/bet-on-charity.git/project.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[credential]
+	helper = gcloud.sh

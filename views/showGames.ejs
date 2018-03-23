@@ -9,6 +9,7 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/styles/style.css">
+
   <!-- <link rel="stylesheet" href="/styles/owl.carousel.css"> -->
 
   <!-- Google Fonts -->
@@ -30,7 +31,9 @@
         <nav class="navigation">
 
           <ul class="list-inline text-center custom-list">
+
             <a href="index.html" id="logo-index"><img src="images/header-banner.png" alt=""></a>
+
             <li><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#games">Games</a></li>
@@ -50,7 +53,9 @@
               </div>
 
 
+
             </ul>
+
         </nav>
         <button class="navbar-toggle">
           <i class="fa fa-list"></i>
@@ -64,6 +69,7 @@
           <% for (let game of games) { %>
               <li class="list-group-item game" data-id="<%= game._id %>">
                 <div class="versus">
+
                   <img src="/images/<%= game.gameAwayTeam %>-<%= game.gameHomeTeam %>.jpg">
                   <!-- <article class="textcentered"> -->
                     <!-- <p><%= game.gameAwayTeam %></p> -->
@@ -72,6 +78,7 @@
                 <!-- <article class="textcentered"> <img src="/images/loyola-Nevada.jpg"> -->
                   <!-- <p><%= game.gameHomeTeam %></p> -->
                 <!-- </article> -->
+
 
               </div>
 
@@ -94,6 +101,7 @@
                     </select>
 
 <div
+
                     <input type="hidden" name="gameId" value=<%= game._id %>>
                     <input class="submit" type='submit'>
                 </form>
@@ -105,6 +113,7 @@
                 <img src ="/images/texam-mich.jpg"> -->
 
               </div>
+
 
               </li>
             <% } %>
