@@ -34,15 +34,15 @@
             <a href="index.html" id="logo-index"><img src="images/header-banner.png" alt=""></a>
             <!-- <li><a href="#">Home</a></li> -->
             <li><a href="#about">About</a></li>
-            <!-- <li><a href="#games">Games</a></li> -->
             <li><a href="#schedule">Schedule</a></li>
             <li><a href="#footer">Contact</a></li>
-            <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
             <% if(!user) { %>
               <a href="/signup">Log in/Sign up</a>
-            <div>
               <% } else { %>
+                <li><a href="#showGames">Games</a></li>
+                <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+                <div>
                 <div style="display: none;">Welcome, <%= user.username %>!</div>
                 <div>Welcome, <%= user.firstname %>!</div>
                 <a href="/logout">Log out</a>
