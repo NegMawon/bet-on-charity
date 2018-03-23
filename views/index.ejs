@@ -72,6 +72,18 @@
           <h1>You already donate, right?</h1>
 
         </div>
+
+        <div>
+          <% if(!user) { %>
+            <a href="/login">Log in</a>
+            <a href="/signup">Sign up</a>
+          <% } else { %>
+            <div>Welcome, <%= user.username %>!</div>
+            <div>Welcome, <%= user.firstname %>!</div>
+            <a href="/logout">Log out</a>
+          <% } %>
+          </div>
+          <hr>
       </div>
       <div class="item">
         <img src="img/slider/bg2.jpg" alt="NCAA">
@@ -101,6 +113,7 @@
     <div class="customNavigation">
       <a class="btn prev"><i class="fa fa-angle-left"></i></a>
       <a class="btn next"><i class="fa fa-angle-right"></i></a>
+
     </div>
   </div>
   <!-- End Intro -->

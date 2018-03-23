@@ -4,40 +4,50 @@ var db = require('./models'),
 var games_list = [
 
   {
-    title: "NCAAMB",
-    description: faker.random.words(),
     user: faker.random.number(),
-    team1: faker.address.state(),
-    team2: faker.address.state()
+    email: faker.internet.email(),
+    gameAwayTeam: "Loyola",
+    gameHomeTeam: "Nevada"
 
   },{
-    title: "NCAAMB",
-    description: faker.random.words(),
     user: faker.random.number(),
-    team1: faker.address.state(),
-    team2: faker.address.state()
+    email: faker.internet.email(),
+    gameAwayTeam: "Texas A&M",
+    gameHomeTeam: "Michigan"
 
   },{
-    title: "NCAAMB",
-    description: faker.random.words(),
     user: faker.random.number(),
-    team1: faker.address.state(),
-    team2: faker.address.state()
+    email: faker.internet.email(),
+    gameAwayTeam: "Kansas State",
+    gameHomeTeam: "Kentucky"
 
   },{
-    title: "NCAAMB",
-    description: faker.random.words(),
     user: faker.random.number(),
-    team1: faker.address.state(),
-    team2: faker.address.state()
+    email: faker.internet.email(),
+    gameAwayTeam: "Florida State",
+    gameHomeTeam: "Gonzaga"
 
   },{
-    title: "NCAAMB",
-    description: faker.random.words(),
     user: faker.random.number(),
-    team1: faker.address.state(),
-    team2: faker.address.state()
+    email: faker.internet.email(),
+    gameAwayTeam: "Clemson",
+    gameHomeTeam: "Kansas"
 
+  },{
+    user: faker.random.number(),
+    email: faker.internet.email(),
+    gameAwayTeam: "West Virginia",
+    gameHomeTeam: "Villanova"
+  },{
+    user: faker.random.number(),
+    email: faker.internet.email(),
+    gameAwayTeam: "Syracuse",
+    gameHomeTeam: "Duke"
+  },{
+    user: faker.random.number(),
+    email: faker.internet.email(),
+    gameAwayTeam: "Texas Tech",
+    gameHomeTeam: "Purdue"
   }
 ];
 

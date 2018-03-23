@@ -77,7 +77,6 @@ app.get("/", function(req, res) {
   });;
 });
 
-
 app.get("/showGames", function(req, res) {
   // res.sendFile('views/index', { root : __dirname});
   // res.render("index", { games: allGames});
@@ -103,6 +102,7 @@ app.get("/showGames", function(req, res) {
 
   });;
 });
+
 //create new user bet and redirect to confirmation page
 app.post("/", function(req, res) {
   console.log("req.body", req.body);
@@ -152,6 +152,7 @@ app.get("/games/:id", function(req, res) {
   });
 });
 
+
 var allGamesData = [];
 
 app.get("/allGames", function(req, res) {
@@ -195,6 +196,7 @@ fetch(url)
     }) //end forEach
   } //end createGamesFromData
     
+
 });
 
 //////////////////////
