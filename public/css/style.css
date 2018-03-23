@@ -3952,7 +3952,7 @@ select {
 #header .header-navbar nav > ul > li {
   position: relative;
   padding: 0 0 40px 0;
-  margin: 20px 10px 0 10px;
+  margin: 40px 20px 0 20px;
 }
 #header .header-navbar nav > ul > li a {
   text-transform: uppercase;
@@ -4085,10 +4085,6 @@ select {
   display: none;
   background: transparent;
   border: none;
-}
-div.container{
-  top: 0;
-  left: 0;
 }
 #header .navbar-toggle i {
   font-size: 18px;
@@ -4246,7 +4242,7 @@ div.container{
 }
 @media (max-width: 992px) {
   #header.fourth-version .header-inner .header-social .social {
-    margin-top: 15px;
+    margin-top: 25px;
     right: 15px;
   }
 }
@@ -4269,7 +4265,7 @@ div.container{
   border-right: none;
 }
 #header.fourth-version .header-navbar nav > ul > li.has-submenu ul {
-  top: 10px;
+  top: 30px;
 }
 @media (max-width: 1200px) {
   #header.fourth-version .header-navbar nav > ul > li {
@@ -4282,10 +4278,10 @@ div.container{
     height: auto;
   }
   #header.fourth-version .header-navbar nav {
-    margin-top: 10px;
+    margin-top: 20px;
   }
   #header.fourth-version .header-navbar nav ul > li {
-    padding-top: 10px;
+    padding-top: 13px;
     padding-bottom: 13px;
   }
   #header.fourth-version .header-navbar nav ul > li.has-submenu ul {
@@ -4412,11 +4408,6 @@ div.container{
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
-#logo-index{
-
-  margin-right: 250px;
-
-}
 @media (max-width: 992px) {
   #footer .sponsors .sponsor-logo {
     height: 88px;
@@ -4490,11 +4481,11 @@ div.container{
 .intro {
   position: relative;
   overflow: hidden;
-  height: 575px;
+  height: 600px;
 }
 #home-slider {
   position: relative;
-  height: 575px;
+  height: 600px;
   background-color: #2a3444;
 }
 #home-slider #video_intro {
@@ -4668,7 +4659,7 @@ div.container{
 /* ABOUT */
 .about {
   position: relative;
-  padding-top: 10px;
+  padding-top: 55px;
 }
 .about .preamble h4 {
   margin-top: 0;

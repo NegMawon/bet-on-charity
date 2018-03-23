@@ -11,7 +11,8 @@ var express = require("express"),
   passport = require("passport"),
   LocalStrategy = require("passport-local").Strategy,
   request = require("request"),
-  $ = require("jquery");
+  $ = require("jquery"),
+  fetch = require("node-fetch");
 // connect to db models
 var db = require("./models"),
   Game = db.Game,
@@ -101,25 +102,14 @@ app.get("/showGames", function(req, res) {
 
   });;
 });
+
 //create new user bet and redirect to confirmation page
 app.post("/", function(req, res) {
-  // res.sendFile('views/index', { root : __dirname});
-  // res.render("index", { games: allGames});
   console.log("req.body", req.body);
-  // var newBet = new Bet({
-  //   team: req.body.team,
-  //   charity: req.body.charity,
-  //   amount: req.body.amount
-  //   // ,
-  //   // gameId: req.params.id
-  // });
-  // console.log("newBet",newBet);
   return res.render("confirmBet", { bet: req.body });
-  // saveBet(newBet, res);
 });
 
 app.post("/confirmBet", function(req, res) {
-  // function saveBet(newBet, res){
   console.log(req.body);
   var newBet = new Bet({
     team: req.body.team,
@@ -129,8 +119,6 @@ app.post("/confirmBet", function(req, res) {
     gameId: req.body.gameId
   });
 
-  // Bet.findOne(req.body.id, function(err, bet){
-  //   console.log(bet);
   newBet.save(function(err, bet) {
     if (err) {
       return console.log("save error: " + err);
@@ -163,33 +151,54 @@ app.get("/games/:id", function(req, res) {
     }
   });
 });
-//
-// app.get("/allGames", function(req, res) {
-//   var params = {
-//            format: JSON,
-//            date: "2018-FEB-27"
-//        };
-// $.ajax({
-//     url: "https://api.fantasydata.net/v3/cbb/scores/JSON/TeamGameStatsByDate/2018-FEB-27",
-//     beforeSend: function(xhrObj){
-//         // Request headers
-//         xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","e415ccd5602b4e06870ba5c497510cbd");
-//     },
-//     type: "GET",
-//     // Request body
-//     data: "{body}",
-// })
-// .done(function(data) {
-//   console.log(data);
-//     alert("success");
-// })
-// .fail(function() {
-//     alert("error");
-// });
-// });
 
+
+
+var allGamesData = [];
 
 app.get("/allGames", function(req, res) {
+
+
+const url =
+  "https://api.fantasydata.net/v3/cbb/scores/JSON/Tournament/sim?key=e415ccd5602b4e06870ba5c497510cbd";
+fetch(url)
+  .then(response => {
+    response.json().then(json => {
+      res.json(
+        createGamesFromData(json)
+      );
+    });
+  })
+  .catch(error => {
+    console.log(error);
+  });
+  
+  
+  function createGamesFromData(json){
+    json.Games.forEach(function (game){
+    
+      var newGame = new Game({
+        user: null,
+        email: null,
+        gameDay: game.Day,
+        gameAwayTeam: game.AwayTeam,
+        awayTeamScore: game.AwayTeamScore,
+        gameHomeTeam: game.HomeTeam,
+        homeTeamScore: game.HomeTeamScore
+      });
+      newGame.save(function(err, game) {
+        if (err) {
+          return console.log("save error: " + err);
+        }
+        console.log("Game saved:", game);
+      
+      });
+      
+    }) //end forEach
+  } //end createGamesFromData
+    
+
+});
 
 
 const url =
