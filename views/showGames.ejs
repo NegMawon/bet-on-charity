@@ -8,9 +8,9 @@
   <title>Betting on Charity</title>
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="/styles/style.css">
 
-  <!-- <link rel="stylesheet" href="/styles/owl.carousel.css"> -->
+  <!-- <link rel="stylesheet" href="/styles/style.css"> -->
+
 
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -42,15 +42,9 @@
             <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
             <div>
-              <% if(!user) { %>
-                <a href="/login">Log in</a>
-                <a href="/signup">Sign up</a>
-              <% } else { %>
-                <div style="display: none;">Welcome, <%= user.username %>!</div>
-                <div>Welcome, <%= user.firstname %>!</div>
-                <a href="/logout">Log out</a>
-              <% } %>
-              </div>
+              <div>Welcome, <%= user.firstname %>!</div>
+              <a href="/logout">Log out</a>
+            </div>
 
 
 
@@ -106,11 +100,6 @@
                     <input class="submit" type='submit'>
                 </form>
 
-
-
-<!--
-                <img src="/images/sem-gonzag.jpg">
-                <img src ="/images/texam-mich.jpg"> -->
 
               </div>
 

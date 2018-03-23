@@ -68,9 +68,31 @@ input:valid+span:after {
   color: green;
   padding-left: 5px;
 }
-/* .currencyinput {
-    border: 1px inset #ccc;
+
+
+.row {
+  margin: 20px;
 }
-.currencyinput input {
-    border: 0;
-} */
+
+.container {
+
+  margin: auto;
+}
+.signup-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.about {
+  height: 100vh;
+  padding-top: 63px;
+}
+
+#about-p {
+  font-size: 2em;
+}
+
+.preamble {
+  margin: 8em 2em;
+}
+

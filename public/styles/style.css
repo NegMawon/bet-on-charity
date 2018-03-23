@@ -4413,7 +4413,9 @@ div.container{
   transition: all 0.2s ease-in-out;
 }
 #logo-index{
-  margin-right: 350px;
+
+  margin-right: 250px;
+
 }
 @media (max-width: 992px) {
   #footer .sponsors .sponsor-logo {

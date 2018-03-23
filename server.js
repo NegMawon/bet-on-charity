@@ -153,6 +153,7 @@ app.get("/games/:id", function(req, res) {
 });
 
 
+
 var allGamesData = [];
 
 app.get("/allGames", function(req, res) {
@@ -199,6 +200,45 @@ fetch(url)
 
 });
 
+
+const url =
+  "https://api.fantasydata.net/v3/cbb/scores/JSON/Tournament/sim?key=e415ccd5602b4e06870ba5c497510cbd";
+fetch(url)
+  .then(response => {
+    response.json().then(json => {
+      res.json(
+        createGamesFromData(json)
+      );
+    });
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+
+  function createGamesFromData(json){
+    json.Games.forEach(function (game){
+
+      var newGame = new Game({
+        user: null,
+        email: null,
+        gameDay: game.Day,
+        gameAwayTeam: game.AwayTeam,
+        awayTeamScore: game.AwayTeamScore,
+        gameHomeTeam: game.HomeTeam,
+        homeTeamScore: game.HomeTeamScore
+      });
+      newGame.save(function(err, game) {
+        if (err) {
+          return console.log("save error: " + err);
+        }
+        console.log("Game saved:", game);
+
+      });
+
+    }) //end forEach
+  } //end createGamesFromData
+});
 //////////////////////
 //// Auth Routes ////
 
