@@ -38,6 +38,16 @@ var games_list = [
     email: faker.internet.email(),
     gameAwayTeam: "West Virginia",
     gameHomeTeam: "Villanova"
+  },{
+    user: faker.random.number(),
+    email: faker.internet.email(),
+    gameAwayTeam: "Syracuse",
+    gameHomeTeam: "Duke"
+  },{
+    user: faker.random.number(),
+    email: faker.internet.email(),
+    gameAwayTeam: "Texas Tech",
+    gameHomeTeam: "Purdue"
   }
 ];
 

@@ -30,7 +30,7 @@
         <nav class="navigation">
 
           <ul class="list-inline text-center custom-list">
-            <a href="index.html" id="logo-index"><img src="img/header-banner.png" alt=""></a>
+            <a href="index.html" id="logo-index"><img src="images/header-banner.png" alt=""></a>
             <li><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#games">Games</a></li>
@@ -63,14 +63,15 @@
 
           <% for (let game of games) { %>
               <li class="list-group-item game" data-id="<%= game._id %>">
-                <div class="versus"><img src="/img/kans-uk.jpg">
-                  <article class="textcentered">
-                    <p><%= game.gameAwayTeam %></p>
-                  </article>
-                    <h1 class="vs">VS.</h1>
-                <article class="textcentered"> <img src="/img/loyola-Nevada.jpg">
-                  <p><%= game.gameHomeTeam %></p>
-                </article>
+                <div class="versus">
+                  <img src="/images/<%= game.gameAwayTeam %>-<%= game.gameHomeTeam %>.jpg">
+                  <!-- <article class="textcentered"> -->
+                    <!-- <p><%= game.gameAwayTeam %></p> -->
+                  <!-- </article> -->
+                    <!-- <h1 class="vs">VS.</h1> -->
+                <!-- <article class="textcentered"> <img src="/images/loyola-Nevada.jpg"> -->
+                  <!-- <p><%= game.gameHomeTeam %></p> -->
+                <!-- </article> -->
 
               </div>
 
@@ -100,8 +101,8 @@
 
 
 <!--
-                <img src="/img/sem-gonzag.jpg">
-                <img src ="/img/texam-mich.jpg"> -->
+                <img src="/images/sem-gonzag.jpg">
+                <img src ="/images/texam-mich.jpg"> -->
 
               </div>
 
