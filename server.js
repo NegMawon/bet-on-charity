@@ -75,6 +75,32 @@ app.get("/", function(req, res) {
 
   });;
 });
+
+app.get("/showGames", function(req, res) {
+  // res.sendFile('views/index', { root : __dirname});
+  // res.render("index", { games: allGames});
+  Game.find(function(err, allGames) {
+    if (err) { res.status(500).json({ error: err.message });}
+
+      //show games of logged in user
+      Bet.find({}, function(err, foundBets){
+      //console.log("foundBets", foundBets[0].amount);
+        var totalBetsAmounts = 0;
+        foundBets.forEach(function(bet){
+          console.log(bet.amount);
+          if(bet.amount){
+            totalBetsAmounts += bet.amount
+          }
+
+        })
+        // foundBets.map(bet => totalBetsAmounts += bet.amount);
+        console.log(totalBetsAmounts);
+
+        res.render("showGames", { games: allGames, user: req.user, bets: foundBets, totalBetsAmounts: totalBetsAmounts});
+      })
+
+  });;
+});
 //create new user bet and redirect to confirmation page
 app.post("/", function(req, res) {
   // res.sendFile('views/index', { root : __dirname});
@@ -137,7 +163,7 @@ app.get("/games/:id", function(req, res) {
     }
   });
 });
-// 
+//
 // app.get("/allGames", function(req, res) {
 //   var params = {
 //            format: JSON,
@@ -171,7 +197,7 @@ app.get("/allGames", function(req, res) {
       res.json(body);
       console.log(body);
       // console.log(response.body);
-// 
+//
 //       // console.log('error:', error); // Print the error if one occurred
 //       // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 //       // console.log('body:', body); // Print the HTML for the Google homepage.

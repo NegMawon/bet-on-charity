@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Betting on Charity</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/styles/style.css">
+  <!-- <link rel="stylesheet" href="/styles/owl.carousel.css"> -->
+
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <script src="scripts/js/min/media.match.min.js"></script>
+
+</head>
+
+<body>
+<div id="main-wrapper">
+
+  <!-- Start Header -->
+  <header id="header" class="fourth-version">
+    <div class="container">
+      </div>
+      <div class="header-navbar col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
+        <nav class="navigation">
+
+          <ul class="list-inline text-center custom-list">
+            <a href="index.html" id="logo-index"><img src="img/header-banner.png" alt=""></a>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#footer">Contact</a></li>
+            <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
+            <div>
+              <% if(!user) { %>
+                <a href="/login">Log in</a>
+                <a href="/signup">Sign up</a>
+              <% } else { %>
+                <div style="display: none;">Welcome, <%= user.username %>!</div>
+                <div>Welcome, <%= user.firstname %>!</div>
+                <a href="/logout">Log out</a>
+              <% } %>
+              </div>
+
+
+            </ul>
+        </nav>
+        <button class="navbar-toggle">
+          <i class="fa fa-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+        <!-- list of games -->
+        <ul class="list-group" id="games-list">
+
+          <% for (let game of games) { %>
+              <li class="list-group-item game" data-id="<%= game._id %>">
+                <div class="versus"><img src="/img/kans-uk.jpg">
+                  <article class="textcentered">
+                    <p><%= game.gameAwayTeam %></p>
+                  </article>
+                    <h1 class="vs">VS.</h1>
+                <article class="textcentered"> <img src="/img/loyola-Nevada.jpg">
+                  <p><%= game.gameHomeTeam %></p>
+                </article>
+
+              </div>
+
+              <div class="amount-charity">
+
+
+                <form method="POST" action="/">
+                    <span class="currencyinput">$</span><input type="number" name="amount" value="1" min="1" required placeholder"bet amount">
+                    <span class="validity"></span>
+                    <select name="charity" class="charity_category">
+                        <option value="Homeless">Homeless</option>
+                        <option value="Animals">Animals</option>
+                        <option value="Prevention">Prevention</option>
+                    </select>
+                    <select name="team" class="team-selector">
+                      <!-- //https://stackoverflow.com/questions/8605516/default-select-option-as-blank -->
+                        <option disabled selected value> -- select a team -- </option>
+                        <option value="<%= game.gameAwayTeam %>"><%= game.gameAwayTeam %></option>
+                        <option value="<%= game.gameHomeTeam %>"><%= game.gameHomeTeam %></option>
+                    </select>
+
+<div
+                    <input type="hidden" name="gameId" value=<%= game._id %>>
+                    <input class="submit" type='submit'>
+                </form>
+
+
+
+<!--
+                <img src="/img/sem-gonzag.jpg">
+                <img src ="/img/texam-mich.jpg"> -->
+
+              </div>
+
+              </li>
+            <% } %>
+        </ul>
+      <!-- </div> -->
+    </div>
+  </div>
+
+
+
+
+
+</body>
+</html>
